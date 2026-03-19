@@ -279,6 +279,24 @@ export function useAnnotationCanvas() {
     try {
       const html2canvas = (await import('html2canvas')).default;
 
+      // html2canvas can't parse oklch/oklab/lch/lab colors. Convert them to
+      // rgb using the browser's own canvas, which supports modern color spaces.
+      const MODERN_COLOR = /^\s*(?:oklch|oklab|lch|lab|color)\s*\(/i;
+      const COLOR_PROPS = [
+        'color', 'background-color',
+        'border-top-color', 'border-right-color', 'border-bottom-color', 'border-left-color',
+        'outline-color', 'text-decoration-color', 'caret-color',
+        'fill', 'stroke', 'column-rule-color', 'accent-color',
+      ];
+      const _resolveCtx = document.createElement('canvas').getContext('2d');
+      function toRgb(val) {
+        if (!MODERN_COLOR.test(val)) return null;
+        try {
+          _resolveCtx.fillStyle = val;
+          return _resolveCtx.fillStyle; // browser resolves to #rrggbb / rgba(...)
+        } catch { return null; }
+      }
+
       const pageShot = await html2canvas(document.body, {
         useCORS: true,
         allowTaint: true,
@@ -288,6 +306,19 @@ export function useAnnotationCanvas() {
         height: window.innerHeight,
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
+        onclone: (clonedDoc) => {
+          const origEls = [...document.querySelectorAll('*')];
+          const cloneEls = [...clonedDoc.querySelectorAll('*')];
+          origEls.forEach((el, i) => {
+            const cloneEl = cloneEls[i];
+            if (!cloneEl) return;
+            const cs = getComputedStyle(el);
+            COLOR_PROPS.forEach(prop => {
+              const rgb = toRgb(cs.getPropertyValue(prop));
+              if (rgb) cloneEl.style.setProperty(prop, rgb);
+            });
+          });
+        },
       });
 
       const fabricDataUrl = canvas.toDataURL({
