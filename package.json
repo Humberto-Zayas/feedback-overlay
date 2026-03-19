@@ -1,0 +1,14 @@
+{
+  "name": "feedback-overlay",
+  "version": "1.0.0",
+  "description": "Visual annotation overlay for React staging environments",
+  "main": "src/index.js",
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "dependencies": {
+    "fabric": "^5.5.2",
+    "html2canvas": "1.4.1"
+  }
+}
