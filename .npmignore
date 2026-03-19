@@ -1,0 +1,5 @@
+demo/
+feedback-overlay.html
+vite.config.js
+node_modules/
+.gitignore
