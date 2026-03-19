@@ -12,8 +12,7 @@
   },
   "files": ["dist", "src"],
   "scripts": {
-    "build": "vite build",
-    "prepare": "vite build"
+    "build": "vite build"
   },
   "peerDependencies": {
     "react": ">=17",
