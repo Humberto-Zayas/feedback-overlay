@@ -307,6 +307,7 @@ export function useAnnotationCanvas() {
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
         onclone: (clonedDoc) => {
+          // Fix computed styles on every element
           const origEls = [...document.querySelectorAll('*')];
           const cloneEls = [...clonedDoc.querySelectorAll('*')];
           origEls.forEach((el, i) => {
@@ -318,6 +319,35 @@ export function useAnnotationCanvas() {
               if (rgb) cloneEl.style.setProperty(prop, rgb);
             });
           });
+
+          // Fix CSS variables (e.g. Tailwind v4 uses oklch in :root custom props).
+          // html2canvas parses raw stylesheet text, so computed-style fixes above
+          // aren't enough — we must also override the variables themselves.
+          const varOverrides = {};
+          try {
+            [...document.styleSheets].forEach(sheet => {
+              let rules;
+              try { rules = [...sheet.cssRules]; } catch { return; }
+              rules.forEach(rule => {
+                if (!rule.cssText) return;
+                const matches = rule.cssText.matchAll(
+                  /(--[\w-]+)\s*:\s*((?:oklch|oklab|lch|lab|color)\s*\([^;{}]+\))/gi
+                );
+                for (const [, varName, val] of matches) {
+                  const rgb = toRgb(val.trim());
+                  if (rgb) varOverrides[varName] = rgb;
+                }
+              });
+            });
+          } catch { /* cross-origin sheets are inaccessible — skip */ }
+
+          if (Object.keys(varOverrides).length > 0) {
+            const override = clonedDoc.createElement('style');
+            override.textContent = `:root { ${
+              Object.entries(varOverrides).map(([k, v]) => `${k}: ${v};`).join(' ')
+            } }`;
+            clonedDoc.head.appendChild(override);
+          }
         },
       });
 
