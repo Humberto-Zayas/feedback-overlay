@@ -277,78 +277,11 @@ export function useAnnotationCanvas() {
     elementsToHide.forEach(el => el && (el.style.visibility = 'hidden'));
 
     try {
-      const html2canvas = (await import('html2canvas')).default;
+      const { toCanvas } = await import('html-to-image');
 
-      // html2canvas can't parse oklch/oklab/lch/lab colors. Convert them to
-      // rgb using the browser's own canvas, which supports modern color spaces.
-      const MODERN_COLOR = /^\s*(?:oklch|oklab|lch|lab|color)\s*\(/i;
-      const COLOR_PROPS = [
-        'color', 'background-color',
-        'border-top-color', 'border-right-color', 'border-bottom-color', 'border-left-color',
-        'outline-color', 'text-decoration-color', 'caret-color',
-        'fill', 'stroke', 'column-rule-color', 'accent-color',
-      ];
-      const _resolveCtx = document.createElement('canvas').getContext('2d');
-      function toRgb(val) {
-        if (!MODERN_COLOR.test(val)) return null;
-        try {
-          _resolveCtx.fillStyle = val;
-          return _resolveCtx.fillStyle; // browser resolves to #rrggbb / rgba(...)
-        } catch { return null; }
-      }
-
-      const pageShot = await html2canvas(document.body, {
+      const pageShot = await toCanvas(document.body, {
         useCORS: true,
-        allowTaint: true,
-        scale: window.devicePixelRatio || 1,
-        scrollY: -window.scrollY,
-        width: window.innerWidth,
-        height: window.innerHeight,
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight,
-        onclone: (clonedDoc) => {
-          // Fix computed styles on every element
-          const origEls = [...document.querySelectorAll('*')];
-          const cloneEls = [...clonedDoc.querySelectorAll('*')];
-          origEls.forEach((el, i) => {
-            const cloneEl = cloneEls[i];
-            if (!cloneEl) return;
-            const cs = getComputedStyle(el);
-            COLOR_PROPS.forEach(prop => {
-              const rgb = toRgb(cs.getPropertyValue(prop));
-              if (rgb) cloneEl.style.setProperty(prop, rgb);
-            });
-          });
-
-          // Fix CSS variables (e.g. Tailwind v4 uses oklch in :root custom props).
-          // html2canvas parses raw stylesheet text, so computed-style fixes above
-          // aren't enough — we must also override the variables themselves.
-          const varOverrides = {};
-          try {
-            [...document.styleSheets].forEach(sheet => {
-              let rules;
-              try { rules = [...sheet.cssRules]; } catch { return; }
-              rules.forEach(rule => {
-                if (!rule.cssText) return;
-                const matches = rule.cssText.matchAll(
-                  /(--[\w-]+)\s*:\s*((?:oklch|oklab|lch|lab|color)\s*\([^;{}]+\))/gi
-                );
-                for (const [, varName, val] of matches) {
-                  const rgb = toRgb(val.trim());
-                  if (rgb) varOverrides[varName] = rgb;
-                }
-              });
-            });
-          } catch { /* cross-origin sheets are inaccessible — skip */ }
-
-          if (Object.keys(varOverrides).length > 0) {
-            const override = clonedDoc.createElement('style');
-            override.textContent = `:root { ${
-              Object.entries(varOverrides).map(([k, v]) => `${k}: ${v};`).join(' ')
-            } }`;
-            clonedDoc.head.appendChild(override);
-          }
-        },
+        pixelRatio: window.devicePixelRatio || 1,
       });
 
       const fabricDataUrl = canvas.toDataURL({
