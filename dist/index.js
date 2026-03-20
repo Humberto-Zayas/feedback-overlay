@@ -1,5 +1,5 @@
 import { jsxs as ft, jsx as it, Fragment as St } from "react/jsx-runtime";
-import { useRef as mt, useState as Ct, useEffect as At } from "react";
+import { useRef as vt, useState as Ct, useEffect as At } from "react";
 const It = "#1C1C22", jt = "rgba(238,234,227,0.12)", Rt = "#F7F4EF", Bt = "rgba(238,234,227,0.5)";
 function bt({ name: q, active: f, onClick: at, title: ot, children: nt }) {
   return /* @__PURE__ */ it(
@@ -24,7 +24,7 @@ function bt({ name: q, active: f, onClick: at, title: ot, children: nt }) {
     }
   );
 }
-function vt({ children: q, ...f }) {
+function mt({ children: q, ...f }) {
   return /* @__PURE__ */ it(
     "svg",
     {
@@ -75,12 +75,12 @@ function Xt({ activeTool: q, onToolChange: f, onUndo: at, onClear: ot }) {
           {
             name: "select",
             title: "Select",
-            icon: /* @__PURE__ */ it(vt, { children: /* @__PURE__ */ it("path", { d: "M5 3l14 9-7 1-4 7z" }) })
+            icon: /* @__PURE__ */ it(mt, { children: /* @__PURE__ */ it("path", { d: "M5 3l14 9-7 1-4 7z" }) })
           },
           {
             name: "draw",
             title: "Freehand",
-            icon: /* @__PURE__ */ ft(vt, { children: [
+            icon: /* @__PURE__ */ ft(mt, { children: [
               /* @__PURE__ */ it("path", { d: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z" }),
               /* @__PURE__ */ it("path", { d: "M20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" })
             ] })
@@ -88,7 +88,7 @@ function Xt({ activeTool: q, onToolChange: f, onUndo: at, onClear: ot }) {
           {
             name: "arrow",
             title: "Arrow",
-            icon: /* @__PURE__ */ ft(vt, { children: [
+            icon: /* @__PURE__ */ ft(mt, { children: [
               /* @__PURE__ */ it("line", { x1: "5", y1: "19", x2: "19", y2: "5" }),
               /* @__PURE__ */ it("polyline", { points: "9 5 19 5 19 15" })
             ] })
@@ -96,17 +96,17 @@ function Xt({ activeTool: q, onToolChange: f, onUndo: at, onClear: ot }) {
           {
             name: "box",
             title: "Box",
-            icon: /* @__PURE__ */ it(vt, { children: /* @__PURE__ */ it("rect", { x: "3", y: "3", width: "18", height: "18", rx: "1" }) })
+            icon: /* @__PURE__ */ it(mt, { children: /* @__PURE__ */ it("rect", { x: "3", y: "3", width: "18", height: "18", rx: "1" }) })
           },
           {
             name: "circle",
             title: "Circle",
-            icon: /* @__PURE__ */ it(vt, { children: /* @__PURE__ */ it("ellipse", { cx: "12", cy: "12", rx: "9", ry: "9" }) })
+            icon: /* @__PURE__ */ it(mt, { children: /* @__PURE__ */ it("ellipse", { cx: "12", cy: "12", rx: "9", ry: "9" }) })
           },
           {
             name: "text",
             title: "Text",
-            icon: /* @__PURE__ */ it(vt, { children: /* @__PURE__ */ it("path", { d: "M4 6h16M12 6v12M8 18h8", strokeLinecap: "round" }) })
+            icon: /* @__PURE__ */ it(mt, { children: /* @__PURE__ */ it("path", { d: "M4 6h16M12 6v12M8 18h8", strokeLinecap: "round" }) })
           }
         ].map((ut) => /* @__PURE__ */ it(
           bt,
@@ -120,11 +120,11 @@ function Xt({ activeTool: q, onToolChange: f, onUndo: at, onClear: ot }) {
           ut.name
         )),
         /* @__PURE__ */ it(Ot, {}),
-        /* @__PURE__ */ it(bt, { name: "undo", title: "Undo", active: !1, onClick: at, children: /* @__PURE__ */ ft(vt, { children: [
+        /* @__PURE__ */ it(bt, { name: "undo", title: "Undo", active: !1, onClick: at, children: /* @__PURE__ */ ft(mt, { children: [
           /* @__PURE__ */ it("polyline", { points: "9 14 4 9 9 4" }),
           /* @__PURE__ */ it("path", { d: "M20 20v-7a4 4 0 0 0-4-4H4" })
         ] }) }),
-        /* @__PURE__ */ it(bt, { name: "clear", title: "Clear all", active: !1, onClick: ot, children: /* @__PURE__ */ ft(vt, { children: [
+        /* @__PURE__ */ it(bt, { name: "clear", title: "Clear all", active: !1, onClick: ot, children: /* @__PURE__ */ ft(mt, { children: [
           /* @__PURE__ */ it("polyline", { points: "3 6 5 6 21 6" }),
           /* @__PURE__ */ it("path", { d: "M19 6l-1 14H6L5 6" }),
           /* @__PURE__ */ it("path", { d: "M10 11v6M14 11v6" })
@@ -648,24 +648,24 @@ function zt() {
          */
         projectStrokeOnPoints: function(t, n, a) {
           var r = [], l = n.strokeWidth / 2, u = n.strokeUniform ? new f.Point(1 / n.scaleX, 1 / n.scaleY) : new f.Point(1, 1), d = function(g) {
-            var v = l / Math.hypot(g.x, g.y);
-            return new f.Point(g.x * v * u.x, g.y * v * u.y);
+            var m = l / Math.hypot(g.x, g.y);
+            return new f.Point(g.x * m * u.x, g.y * m * u.y);
           };
-          return t.length <= 1 || t.forEach(function(g, v) {
-            var m = new f.Point(g.x, g.y), y, w;
-            v === 0 ? (w = t[v + 1], y = a ? d(f.util.createVector(w, m)).addEquals(m) : t[t.length - 1]) : v === t.length - 1 ? (y = t[v - 1], w = a ? d(f.util.createVector(y, m)).addEquals(m) : t[0]) : (y = t[v - 1], w = t[v + 1]);
-            var E = f.util.getBisector(m, y, w), L = E.vector, W = E.angle, G, V;
+          return t.length <= 1 || t.forEach(function(g, m) {
+            var v = new f.Point(g.x, g.y), y, w;
+            m === 0 ? (w = t[m + 1], y = a ? d(f.util.createVector(w, v)).addEquals(v) : t[t.length - 1]) : m === t.length - 1 ? (y = t[m - 1], w = a ? d(f.util.createVector(y, v)).addEquals(v) : t[0]) : (y = t[m - 1], w = t[m + 1]);
+            var E = f.util.getBisector(v, y, w), L = E.vector, W = E.angle, G, V;
             if (n.strokeLineJoin === "miter" && (G = -l / Math.sin(W / 2), V = new f.Point(
               L.x * G * u.x,
               L.y * G * u.y
             ), Math.hypot(V.x, V.y) / l <= n.strokeMiterLimit)) {
-              r.push(m.add(V)), r.push(m.subtract(V));
+              r.push(v.add(V)), r.push(v.subtract(V));
               return;
             }
             G = -l * Math.SQRT2, V = new f.Point(
               L.x * G * u.x,
               L.y * G * u.y
-            ), r.push(m.add(V)), r.push(m.subtract(V));
+            ), r.push(v.add(V)), r.push(v.subtract(V));
           }), r;
         },
         /**
@@ -696,10 +696,10 @@ function zt() {
           if (n)
             for (var a = 0; a < t.length; a++)
               t[a] = f.util.transformPoint(t[a], n);
-          var r = [t[0].x, t[1].x, t[2].x, t[3].x], l = f.util.array.min(r), u = f.util.array.max(r), d = u - l, g = [t[0].y, t[1].y, t[2].y, t[3].y], v = f.util.array.min(g), m = f.util.array.max(g), y = m - v;
+          var r = [t[0].x, t[1].x, t[2].x, t[3].x], l = f.util.array.min(r), u = f.util.array.max(r), d = u - l, g = [t[0].y, t[1].y, t[2].y, t[3].y], m = f.util.array.min(g), v = f.util.array.max(g), y = v - m;
           return {
             left: l,
-            top: v,
+            top: m,
             width: d,
             height: y
           };
@@ -860,22 +860,22 @@ function zt() {
           t = t || [];
           var l = [], u = 0, d = t.length;
           function g() {
-            ++u === d && n && n(l.filter(function(v) {
-              return v;
+            ++u === d && n && n(l.filter(function(m) {
+              return m;
             }));
           }
           if (!d) {
             n && n(l);
             return;
           }
-          t.forEach(function(v, m) {
-            if (!v || !v.type) {
+          t.forEach(function(m, v) {
+            if (!m || !m.type) {
               g();
               return;
             }
-            var y = f.util.getKlass(v.type, a);
-            y.fromObject(v, function(w, E) {
-              E || (l[m] = w), r && r(v, w, E), g();
+            var y = f.util.getKlass(m.type, a);
+            y.fromObject(m, function(w, E) {
+              E || (l[v] = w), r && r(m, w, E), g();
             });
           });
         },
@@ -918,8 +918,8 @@ function zt() {
             return;
           }
           t.forEach(function(d, g) {
-            d && d.source ? new f.Pattern(d, function(v) {
-              r[g] = v, a();
+            d && d.source ? new f.Pattern(d, function(m) {
+              r[g] = m, a();
             }) : (r[g] = d, a());
           });
         },
@@ -1144,8 +1144,8 @@ function zt() {
          */
         isTransparent: function(t, n, a, r) {
           r > 0 && (n > r ? n -= r : n = 0, a > r ? a -= r : a = 0);
-          var l = !0, u, d, g = t.getImageData(n, a, r * 2 || 1, r * 2 || 1), v = g.data.length;
-          for (u = 3; u < v && (d = g.data[u], l = d <= 0, l !== !1); u += 4)
+          var l = !0, u, d, g = t.getImageData(n, a, r * 2 || 1, r * 2 || 1), m = g.data.length;
+          for (u = 3; u < m && (d = g.data[u], l = d <= 0, l !== !1); u += 4)
             ;
           return g = null, l;
         },
@@ -1375,18 +1375,18 @@ function zt() {
               l += r[g].length;
               continue;
             }
-            for (var v = 0; v < r[g].length; v++) {
+            for (var m = 0; m < r[g].length; m++) {
               l++;
-              var m = a[g][v];
-              if (m && Object.keys(m).length > 0) {
-                var y = f.util.hasStyleChanged(u, m, !0);
+              var v = a[g][m];
+              if (v && Object.keys(v).length > 0) {
+                var y = f.util.hasStyleChanged(u, v, !0);
                 y ? d.push({
                   start: l,
                   end: l + 1,
-                  style: m
+                  style: v
                 }) : d[d.length - 1].end++;
               }
-              u = m || {};
+              u = v || {};
             }
           }
           return d;
@@ -1574,7 +1574,7 @@ function zt() {
       function g(p) {
         return (1 - p) * (1 - p) * (1 - p);
       }
-      function v(p, x, b, S, k, C, _, T) {
+      function m(p, x, b, S, k, C, _, T) {
         return function(P) {
           var F = l(P), D = u(P), B = d(P), Y = g(P);
           return {
@@ -1583,7 +1583,7 @@ function zt() {
           };
         };
       }
-      function m(p, x, b, S, k, C, _, T) {
+      function v(p, x, b, S, k, C, _, T) {
         return function(P) {
           var F = 1 - P, D = 3 * F * F * (b - p) + 6 * F * P * (k - b) + 3 * P * P * (_ - k), B = 3 * F * F * (S - x) + 6 * F * P * (C - S) + 3 * P * P * (T - C);
           return Math.atan2(B, D);
@@ -1639,7 +1639,7 @@ function zt() {
               D.length = r(k, C, S[1], S[2]), k = S[1], C = S[2];
               break;
             case "C":
-              F = v(
+              F = m(
                 k,
                 C,
                 S[1],
@@ -1648,7 +1648,7 @@ function zt() {
                 S[4],
                 S[5],
                 S[6]
-              ), B = m(
+              ), B = v(
                 k,
                 C,
                 S[1],
@@ -1975,75 +1975,75 @@ function zt() {
       } catch {
       }
       h || (o = function(g) {
-        for (var v = new Array(g.length), m = g.length; m--; )
-          v[m] = g[m];
-        return v;
-      });
-      function i(g, v) {
-        var m = f.document.createElement(g);
-        for (var y in v)
-          y === "class" ? m.className = v[y] : y === "for" ? m.htmlFor = v[y] : m.setAttribute(y, v[y]);
+        for (var m = new Array(g.length), v = g.length; v--; )
+          m[v] = g[v];
         return m;
+      });
+      function i(g, m) {
+        var v = f.document.createElement(g);
+        for (var y in m)
+          y === "class" ? v.className = m[y] : y === "for" ? v.htmlFor = m[y] : v.setAttribute(y, m[y]);
+        return v;
       }
-      function e(g, v) {
-        g && (" " + g.className + " ").indexOf(" " + v + " ") === -1 && (g.className += (g.className ? " " : "") + v);
+      function e(g, m) {
+        g && (" " + g.className + " ").indexOf(" " + m + " ") === -1 && (g.className += (g.className ? " " : "") + m);
       }
-      function t(g, v, m) {
-        return typeof v == "string" && (v = i(v, m)), g.parentNode && g.parentNode.replaceChild(v, g), v.appendChild(g), v;
+      function t(g, m, v) {
+        return typeof m == "string" && (m = i(m, v)), g.parentNode && g.parentNode.replaceChild(m, g), m.appendChild(g), m;
       }
       function n(g) {
-        for (var v = 0, m = 0, y = f.document.documentElement, w = f.document.body || {
+        for (var m = 0, v = 0, y = f.document.documentElement, w = f.document.body || {
           scrollLeft: 0,
           scrollTop: 0
-        }; g && (g.parentNode || g.host) && (g = g.parentNode || g.host, g === f.document ? (v = w.scrollLeft || y.scrollLeft || 0, m = w.scrollTop || y.scrollTop || 0) : (v += g.scrollLeft || 0, m += g.scrollTop || 0), !(g.nodeType === 1 && g.style.position === "fixed")); )
+        }; g && (g.parentNode || g.host) && (g = g.parentNode || g.host, g === f.document ? (m = w.scrollLeft || y.scrollLeft || 0, v = w.scrollTop || y.scrollTop || 0) : (m += g.scrollLeft || 0, v += g.scrollTop || 0), !(g.nodeType === 1 && g.style.position === "fixed")); )
           ;
-        return { left: v, top: m };
+        return { left: m, top: v };
       }
       function a(g) {
-        var v, m = g && g.ownerDocument, y = { left: 0, top: 0 }, w = { left: 0, top: 0 }, E, L = {
+        var m, v = g && g.ownerDocument, y = { left: 0, top: 0 }, w = { left: 0, top: 0 }, E, L = {
           borderLeftWidth: "left",
           borderTopWidth: "top",
           paddingLeft: "left",
           paddingTop: "top"
         };
-        if (!m)
+        if (!v)
           return w;
         for (var W in L)
           w[L[W]] += parseInt(r(g, W), 10) || 0;
-        return v = m.documentElement, typeof g.getBoundingClientRect < "u" && (y = g.getBoundingClientRect()), E = n(g), {
-          left: y.left + E.left - (v.clientLeft || 0) + w.left,
-          top: y.top + E.top - (v.clientTop || 0) + w.top
+        return m = v.documentElement, typeof g.getBoundingClientRect < "u" && (y = g.getBoundingClientRect()), E = n(g), {
+          left: y.left + E.left - (m.clientLeft || 0) + w.left,
+          top: y.top + E.top - (m.clientTop || 0) + w.top
         };
       }
       var r;
-      f.document.defaultView && f.document.defaultView.getComputedStyle ? r = function(g, v) {
-        var m = f.document.defaultView.getComputedStyle(g, null);
-        return m ? m[v] : void 0;
-      } : r = function(g, v) {
-        var m = g.style[v];
-        return !m && g.currentStyle && (m = g.currentStyle[v]), m;
+      f.document.defaultView && f.document.defaultView.getComputedStyle ? r = function(g, m) {
+        var v = f.document.defaultView.getComputedStyle(g, null);
+        return v ? v[m] : void 0;
+      } : r = function(g, m) {
+        var v = g.style[m];
+        return !v && g.currentStyle && (v = g.currentStyle[m]), v;
       }, (function() {
-        var g = f.document.documentElement.style, v = "userSelect" in g ? "userSelect" : "MozUserSelect" in g ? "MozUserSelect" : "WebkitUserSelect" in g ? "WebkitUserSelect" : "KhtmlUserSelect" in g ? "KhtmlUserSelect" : "";
-        function m(w) {
-          return typeof w.onselectstart < "u" && (w.onselectstart = f.util.falseFunction), v ? w.style[v] = "none" : typeof w.unselectable == "string" && (w.unselectable = "on"), w;
+        var g = f.document.documentElement.style, m = "userSelect" in g ? "userSelect" : "MozUserSelect" in g ? "MozUserSelect" : "WebkitUserSelect" in g ? "WebkitUserSelect" : "KhtmlUserSelect" in g ? "KhtmlUserSelect" : "";
+        function v(w) {
+          return typeof w.onselectstart < "u" && (w.onselectstart = f.util.falseFunction), m ? w.style[m] = "none" : typeof w.unselectable == "string" && (w.unselectable = "on"), w;
         }
         function y(w) {
-          return typeof w.onselectstart < "u" && (w.onselectstart = null), v ? w.style[v] = "" : typeof w.unselectable == "string" && (w.unselectable = ""), w;
+          return typeof w.onselectstart < "u" && (w.onselectstart = null), m ? w.style[m] = "" : typeof w.unselectable == "string" && (w.unselectable = ""), w;
         }
-        f.util.makeElementUnselectable = m, f.util.makeElementSelectable = y;
+        f.util.makeElementUnselectable = v, f.util.makeElementSelectable = y;
       })();
       function l(g) {
-        var v = f.jsdomImplForWrapper(g);
-        return v._canvas || v._image;
+        var m = f.jsdomImplForWrapper(g);
+        return m._canvas || m._image;
       }
       function u(g) {
         if (f.isLikelyNode) {
-          var v = f.jsdomImplForWrapper(g);
-          v && (v._image = null, v._canvas = null, v._currentSrc = null, v._attributes = null, v._classList = null);
+          var m = f.jsdomImplForWrapper(g);
+          m && (m._image = null, m._canvas = null, m._currentSrc = null, m._attributes = null, m._classList = null);
         }
       }
-      function d(g, v) {
-        g.imageSmoothingEnabled = g.imageSmoothingEnabled || g.webkitImageSmoothingEnabled || g.mozImageSmoothingEnabled || g.msImageSmoothingEnabled || g.oImageSmoothingEnabled, g.imageSmoothingEnabled = v;
+      function d(g, m) {
+        g.imageSmoothingEnabled = g.imageSmoothingEnabled || g.webkitImageSmoothingEnabled || g.mozImageSmoothingEnabled || g.msImageSmoothingEnabled || g.oImageSmoothingEnabled, g.imageSmoothingEnabled = m;
       }
       f.util.setImageSmoothing = d, f.util.getById = s, f.util.toArray = o, f.util.addClass = e, f.util.makeElement = i, f.util.wrapElement = t, f.util.getScrollLeftTop = n, f.util.getElementOffset = a, f.util.getNodeCanvas = l, f.util.cleanUpJsdomNode = u;
     })(), (function() {
@@ -2138,8 +2138,8 @@ function zt() {
       function e(l) {
         l || (l = {});
         var u = !1, d, g = function() {
-          var v = f.runningAnimations.indexOf(d);
-          return v > -1 && f.runningAnimations.splice(v, 1)[0];
+          var m = f.runningAnimations.indexOf(d);
+          return m > -1 && f.runningAnimations.splice(m, 1)[0];
         };
         return d = c(s(l), {
           cancel: function() {
@@ -2148,13 +2148,13 @@ function zt() {
           currentValue: "startValue" in l ? l.startValue : 0,
           completionRate: 0,
           durationRate: 0
-        }), f.runningAnimations.push(d), a(function(v) {
-          var m = v || +/* @__PURE__ */ new Date(), y = l.duration || 500, w = m + y, E, L = l.onChange || o, W = l.abort || o, G = l.onComplete || o, V = l.easing || i, H = "startValue" in l ? l.startValue.length > 0 : !1, N = "startValue" in l ? l.startValue : 0, K = "endValue" in l ? l.endValue : 100, $ = l.byValue || (H ? N.map(function(J, p) {
+        }), f.runningAnimations.push(d), a(function(m) {
+          var v = m || +/* @__PURE__ */ new Date(), y = l.duration || 500, w = v + y, E, L = l.onChange || o, W = l.abort || o, G = l.onComplete || o, V = l.easing || i, H = "startValue" in l ? l.startValue.length > 0 : !1, N = "startValue" in l ? l.startValue : 0, K = "endValue" in l ? l.endValue : 100, $ = l.byValue || (H ? N.map(function(J, p) {
             return K[p] - N[p];
           }) : K - N);
           l.onStart && l.onStart(), (function J(p) {
             E = p || +/* @__PURE__ */ new Date();
-            var x = E > w ? y : E - m, b = x / y, S = H ? N.map(function(C, _) {
+            var x = E > w ? y : E - v, b = x / y, S = H ? N.map(function(C, _) {
               return V(x, N[_], $[_], y);
             }) : V(x, N, $, y), k = Math.abs(H ? (S[0] - N[0]) / $[0] : (S - N) / $);
             if (d.currentValue = H ? S.slice() : S, d.completionRate = k, d.durationRate = b, !u) {
@@ -2168,7 +2168,7 @@ function zt() {
               } else
                 L(S, k, b), a(J);
             }
-          })(m);
+          })(v);
         }), d.cancel;
       }
       var t = f.window.requestAnimationFrame || f.window.webkitRequestAnimationFrame || f.window.mozRequestAnimationFrame || f.window.oRequestAnimationFrame || f.window.msRequestAnimationFrame || function(l) {
@@ -2194,8 +2194,8 @@ function zt() {
           endValue: n,
           byValue: n,
           easing: function(l, u, d, g) {
-            var v = e.colorEasing ? e.colorEasing(l, g) : 1 - Math.cos(l / g * (Math.PI / 2));
-            return c(u, d, v);
+            var m = e.colorEasing ? e.colorEasing(l, g) : 1 - Math.cos(l / g * (Math.PI / 2));
+            return c(u, d, m);
           },
           // has to take in account for color restoring;
           onComplete: function(l, u, d) {
@@ -2263,10 +2263,10 @@ function zt() {
       function g(p, x, b, S) {
         return p === 0 ? x : b * Math.pow(2, 10 * (p / S - 1)) + x;
       }
-      function v(p, x, b, S) {
+      function m(p, x, b, S) {
         return p === S ? x + b : b * (-Math.pow(2, -10 * p / S) + 1) + x;
       }
-      function m(p, x, b, S) {
+      function v(p, x, b, S) {
         return p === 0 ? x : p === S ? x + b : (p /= S / 2, p < 1 ? b / 2 * Math.pow(2, 10 * (p - 1)) + x : b / 2 * (-Math.pow(2, -10 * --p) + 2) + x);
       }
       function y(p, x, b, S) {
@@ -2367,8 +2367,8 @@ function zt() {
         easeOutSine: u,
         easeInOutSine: d,
         easeInExpo: g,
-        easeOutExpo: v,
-        easeInOutExpo: m,
+        easeOutExpo: m,
+        easeInOutExpo: v,
         easeInCirc: y,
         easeOutCirc: w,
         easeInOutCirc: E,
@@ -2427,9 +2427,9 @@ function zt() {
       }, d = {
         stroke: "strokeOpacity",
         fill: "fillOpacity"
-      }, g = "font-size", v = "clip-path";
+      }, g = "font-size", m = "clip-path";
       s.svgValidTagNamesRegEx = w(n), s.svgViewBoxElementsRegEx = w(a), s.svgInvalidAncestorsRegEx = w(r), s.svgValidParentsRegEx = w(l), s.cssRules = {}, s.gradientDefs = {}, s.clipPaths = {};
-      function m(C) {
+      function v(C) {
         return C in u ? u[C] : C;
       }
       function y(C, _, T, P) {
@@ -2733,10 +2733,10 @@ function zt() {
             Y = h(
               Y,
               z
-            ), z[v] && C.setAttribute(v, z[v]), D = B = F.fontSize || s.Text.DEFAULT_SVG_FONT_SIZE, Y[g] && (Y[g] = D = e(Y[g], B));
+            ), z[m] && C.setAttribute(m, z[m]), D = B = F.fontSize || s.Text.DEFAULT_SVG_FONT_SIZE, Y[g] && (Y[g] = D = e(Y[g], B));
             var A, O, j = {};
             for (var R in Y)
-              A = m(R), O = y(A, Y[R], F, D), j[A] = O;
+              A = v(R), O = y(A, Y[R], F, D), j[A] = O;
             j && j.font && s.parseFontDeclaration(j.font, j);
             var M = h(F, j);
             return s.svgValidParentsRegEx.test(C.nodeName) ? M : E(M);
@@ -3234,8 +3234,8 @@ function zt() {
         }
         return e.points.length > 0 && (e.status = "Intersection"), e;
       }, s.Intersection.intersectPolygonRectangle = function(o, i, e) {
-        var t = i.min(e), n = i.max(e), a = new s.Point(n.x, t.y), r = new s.Point(t.x, n.y), l = h.intersectLinePolygon(t, a, o), u = h.intersectLinePolygon(a, n, o), d = h.intersectLinePolygon(n, r, o), g = h.intersectLinePolygon(r, t, o), v = new h();
-        return v.appendPoints(l.points), v.appendPoints(u.points), v.appendPoints(d.points), v.appendPoints(g.points), v.points.length > 0 && (v.status = "Intersection"), v;
+        var t = i.min(e), n = i.max(e), a = new s.Point(n.x, t.y), r = new s.Point(t.x, n.y), l = h.intersectLinePolygon(t, a, o), u = h.intersectLinePolygon(a, n, o), d = h.intersectLinePolygon(n, r, o), g = h.intersectLinePolygon(r, t, o), m = new h();
+        return m.appendPoints(l.points), m.appendPoints(u.points), m.appendPoints(d.points), m.appendPoints(g.points), m.points.length > 0 && (m.status = "Intersection"), m;
       };
     })(q), (function(c) {
       var s = c.fabric || (c.fabric = {});
@@ -3612,11 +3612,11 @@ function zt() {
         var j = A.angle + u(Math.atan2(O.y, O.x)) + 360;
         return Math.round(j % 360 / 45);
       }
-      function v(A, O) {
+      function m(A, O) {
         var j = O.transform.target, R = j.canvas, M = s.util.object.clone(O);
         M.target = j, R && R.fire("object:" + A, M), j.fire(A, O);
       }
-      function m(A, O) {
+      function v(A, O) {
         var j = O.canvas, R = j.uniScaleKey, M = A[R];
         return j.uniformScaling && !M || !j.uniformScaling && M;
       }
@@ -3628,7 +3628,7 @@ function zt() {
         return !!(R && M || !O && (R || M) && j || R && O === "x" || M && O === "y");
       }
       function E(A, O, j) {
-        var R = "not-allowed", M = m(A, j), X = "";
+        var R = "not-allowed", M = v(A, j), X = "";
         if (O.x !== 0 && O.y === 0 ? X = "x" : O.x === 0 && O.y !== 0 && (X = "y"), w(j, X, M))
           return R;
         var U = g(j, O);
@@ -3673,7 +3673,7 @@ function zt() {
       function K(A, O) {
         return function(j, R, M, X) {
           var U = O(j, R, M, X);
-          return U && v(A, H(j, R, M, X)), U;
+          return U && m(A, H(j, R, M, X)), U;
         };
       }
       function $(A, O, j, R, M) {
@@ -3752,7 +3752,7 @@ function zt() {
       }
       function _(A, O, j, R, M) {
         M = M || {};
-        var X = O.target, U = X.lockScalingX, tt = X.lockScalingY, Q = M.by, I, Z, et, rt, ht = m(A, X), st = w(X, Q, ht), ct, lt, pt = O.gestureScale;
+        var X = O.target, U = X.lockScalingX, tt = X.lockScalingY, Q = M.by, I, Z, et, rt, ht = v(A, X), st = w(X, Q, ht), ct, lt, pt = O.gestureScale;
         if (st)
           return !1;
         if (pt)
@@ -3791,20 +3791,20 @@ function zt() {
       }
       function z(A, O, j, R) {
         var M = O.target, X = j - O.offsetX, U = R - O.offsetY, tt = !M.get("lockMovementX") && M.left !== X, Q = !M.get("lockMovementY") && M.top !== U;
-        return tt && M.set("left", X), Q && M.set("top", U), (tt || Q) && v("moving", H(A, O, j, R)), tt || Q;
+        return tt && M.set("left", X), Q && M.set("top", U), (tt || Q) && m("moving", H(A, O, j, R)), tt || Q;
       }
-      i.scaleCursorStyleHandler = E, i.skewCursorStyleHandler = L, i.scaleSkewCursorStyleHandler = W, i.rotationWithSnapping = K("rotating", N(C)), i.scalingEqually = K("scaling", N(T)), i.scalingX = K("scaling", N(P)), i.scalingY = K("scaling", N(F)), i.scalingYOrSkewingX = D, i.scalingXOrSkewingY = B, i.changeWidth = K("resizing", N(Y)), i.skewHandlerX = S, i.skewHandlerY = k, i.dragHandler = z, i.scaleOrSkewActionName = G, i.rotationStyleHandler = V, i.fireEvent = v, i.wrapWithFixedAnchor = N, i.wrapWithFireEvent = K, i.getLocalPoint = $, s.controlsUtils = i;
+      i.scaleCursorStyleHandler = E, i.skewCursorStyleHandler = L, i.scaleSkewCursorStyleHandler = W, i.rotationWithSnapping = K("rotating", N(C)), i.scalingEqually = K("scaling", N(T)), i.scalingX = K("scaling", N(P)), i.scalingY = K("scaling", N(F)), i.scalingYOrSkewingX = D, i.scalingXOrSkewingY = B, i.changeWidth = K("resizing", N(Y)), i.skewHandlerX = S, i.skewHandlerY = k, i.dragHandler = z, i.scaleOrSkewActionName = G, i.rotationStyleHandler = V, i.fireEvent = m, i.wrapWithFixedAnchor = N, i.wrapWithFireEvent = K, i.getLocalPoint = $, s.controlsUtils = i;
     })(q), (function(c) {
       var s = c.fabric || (c.fabric = {}), h = s.util.degreesToRadians, o = s.controlsUtils;
       function i(t, n, a, r, l) {
         r = r || {};
-        var u = this.sizeX || r.cornerSize || l.cornerSize, d = this.sizeY || r.cornerSize || l.cornerSize, g = typeof r.transparentCorners < "u" ? r.transparentCorners : l.transparentCorners, v = g ? "stroke" : "fill", m = !g && (r.cornerStrokeColor || l.cornerStrokeColor), y = n, w = a, E;
-        t.save(), t.fillStyle = r.cornerColor || l.cornerColor, t.strokeStyle = r.cornerStrokeColor || l.cornerStrokeColor, u > d ? (E = u, t.scale(1, d / u), w = a * u / d) : d > u ? (E = d, t.scale(u / d, 1), y = n * d / u) : E = u, t.lineWidth = 1, t.beginPath(), t.arc(y, w, E / 2, 0, 2 * Math.PI, !1), t[v](), m && t.stroke(), t.restore();
+        var u = this.sizeX || r.cornerSize || l.cornerSize, d = this.sizeY || r.cornerSize || l.cornerSize, g = typeof r.transparentCorners < "u" ? r.transparentCorners : l.transparentCorners, m = g ? "stroke" : "fill", v = !g && (r.cornerStrokeColor || l.cornerStrokeColor), y = n, w = a, E;
+        t.save(), t.fillStyle = r.cornerColor || l.cornerColor, t.strokeStyle = r.cornerStrokeColor || l.cornerStrokeColor, u > d ? (E = u, t.scale(1, d / u), w = a * u / d) : d > u ? (E = d, t.scale(u / d, 1), y = n * d / u) : E = u, t.lineWidth = 1, t.beginPath(), t.arc(y, w, E / 2, 0, 2 * Math.PI, !1), t[m](), v && t.stroke(), t.restore();
       }
       function e(t, n, a, r, l) {
         r = r || {};
-        var u = this.sizeX || r.cornerSize || l.cornerSize, d = this.sizeY || r.cornerSize || l.cornerSize, g = typeof r.transparentCorners < "u" ? r.transparentCorners : l.transparentCorners, v = g ? "stroke" : "fill", m = !g && (r.cornerStrokeColor || l.cornerStrokeColor), y = u / 2, w = d / 2;
-        t.save(), t.fillStyle = r.cornerColor || l.cornerColor, t.strokeStyle = r.cornerStrokeColor || l.cornerStrokeColor, t.lineWidth = 1, t.translate(n, a), t.rotate(h(l.angle)), t[v + "Rect"](-y, -w, u, d), m && t.strokeRect(-y, -w, u, d), t.restore();
+        var u = this.sizeX || r.cornerSize || l.cornerSize, d = this.sizeY || r.cornerSize || l.cornerSize, g = typeof r.transparentCorners < "u" ? r.transparentCorners : l.transparentCorners, m = g ? "stroke" : "fill", v = !g && (r.cornerStrokeColor || l.cornerStrokeColor), y = u / 2, w = d / 2;
+        t.save(), t.fillStyle = r.cornerColor || l.cornerColor, t.strokeStyle = r.cornerStrokeColor || l.cornerStrokeColor, t.lineWidth = 1, t.translate(n, a), t.rotate(h(l.angle)), t[m + "Rect"](-y, -w, u, d), v && t.strokeRect(-y, -w, u, d), t.restore();
       }
       o.renderCircleControl = i, o.renderSquareControl = e;
     })(q), (function(c) {
@@ -4041,13 +4041,13 @@ function zt() {
         calcCornerCoords: function(o, i, e, t, n) {
           var a, r, l, u, d = n ? this.touchSizeX : this.sizeX, g = n ? this.touchSizeY : this.sizeY;
           if (d && g && d !== g) {
-            var v = Math.atan2(g, d), m = Math.sqrt(d * d + g * g) / 2, y = v - s.util.degreesToRadians(o), w = Math.PI / 2 - v - s.util.degreesToRadians(o);
-            a = m * s.util.cos(y), r = m * s.util.sin(y), l = m * s.util.cos(w), u = m * s.util.sin(w);
+            var m = Math.atan2(g, d), v = Math.sqrt(d * d + g * g) / 2, y = m - s.util.degreesToRadians(o), w = Math.PI / 2 - m - s.util.degreesToRadians(o);
+            a = v * s.util.cos(y), r = v * s.util.sin(y), l = v * s.util.cos(w), u = v * s.util.sin(w);
           } else {
             var E = d && g ? d : i;
-            m = E * 0.7071067812;
+            v = E * 0.7071067812;
             var y = s.util.degreesToRadians(45 - o);
-            a = l = m * s.util.cos(y), r = u = m * s.util.sin(y);
+            a = l = v * s.util.cos(y), r = u = v * s.util.sin(y);
           }
           return {
             tl: {
@@ -4096,8 +4096,8 @@ function zt() {
         if (a = parseFloat(a) / (/%$/.test(a) ? 100 : 1), a = a < 0 ? 0 : a > 1 ? 1 : a, n) {
           var g = n.split(/\s*;\s*/);
           for (g[g.length - 1] === "" && g.pop(), d = g.length; d--; ) {
-            var v = g[d].split(/\s*:\s*/), m = v[0].trim(), y = v[1].trim();
-            m === "stop-color" ? r = y : m === "stop-opacity" && (u = y);
+            var m = g[d].split(/\s*:\s*/), v = m[0].trim(), y = m[1].trim();
+            v === "stop-color" ? r = y : v === "stop-opacity" && (u = y);
           }
         }
         return r || (r = e.getAttribute("stop-color") || "rgb(0,0,0)"), u || (u = e.getAttribute("stop-opacity")), r = new f.Color(r), l = r.getAlpha(), u = isNaN(parseFloat(u)) ? 1 : parseFloat(u), u *= l * t, {
@@ -4234,10 +4234,10 @@ function zt() {
            * @return {String} SVG representation of an gradient (linear/radial)
            */
           toSVG: function(e, l) {
-            var n = o(this.coords, !0), a, r, l = l || {}, u, d, g = o(this.colorStops, !0), v = n.r1 > n.r2, m = this.gradientTransform ? this.gradientTransform.concat() : f.iMatrix.concat(), y = -this.offsetX, w = -this.offsetY, E = !!l.additionalTransform, L = this.gradientUnits === "pixels" ? "userSpaceOnUse" : "objectBoundingBox";
+            var n = o(this.coords, !0), a, r, l = l || {}, u, d, g = o(this.colorStops, !0), m = n.r1 > n.r2, v = this.gradientTransform ? this.gradientTransform.concat() : f.iMatrix.concat(), y = -this.offsetX, w = -this.offsetY, E = !!l.additionalTransform, L = this.gradientUnits === "pixels" ? "userSpaceOnUse" : "objectBoundingBox";
             if (g.sort(function(N, K) {
               return N.offset - K.offset;
-            }), L === "objectBoundingBox" ? (y /= e.width, w /= e.height) : (y += e.width / 2, w += e.height / 2), e.type === "path" && this.gradientUnits !== "percentage" && (y -= e.pathOffset.x, w -= e.pathOffset.y), m[4] -= y, m[5] -= w, d = 'id="SVGID_' + this.id + '" gradientUnits="' + L + '"', d += ' gradientTransform="' + (E ? l.additionalTransform + " " : "") + f.util.matrixToSVG(m) + '" ', this.type === "linear" ? u = [
+            }), L === "objectBoundingBox" ? (y /= e.width, w /= e.height) : (y += e.width / 2, w += e.height / 2), e.type === "path" && this.gradientUnits !== "percentage" && (y -= e.pathOffset.x, w -= e.pathOffset.y), v[4] -= y, v[5] -= w, d = 'id="SVGID_' + this.id + '" gradientUnits="' + L + '"', d += ' gradientTransform="' + (E ? l.additionalTransform + " " : "") + f.util.matrixToSVG(v) + '" ', this.type === "linear" ? u = [
               "<linearGradient ",
               d,
               ' x1="',
@@ -4254,19 +4254,19 @@ function zt() {
               "<radialGradient ",
               d,
               ' cx="',
-              v ? n.x1 : n.x2,
+              m ? n.x1 : n.x2,
               '" cy="',
-              v ? n.y1 : n.y2,
+              m ? n.y1 : n.y2,
               '" r="',
-              v ? n.r1 : n.r2,
+              m ? n.r1 : n.r2,
               '" fx="',
-              v ? n.x2 : n.x1,
+              m ? n.x2 : n.x1,
               '" fy="',
-              v ? n.y2 : n.y1,
+              m ? n.y2 : n.y1,
               `">
 `
             ]), this.type === "radial") {
-              if (v)
+              if (m)
                 for (g = g.concat(), g.reverse(), a = 0, r = g.length; a < r; a++)
                   g[a].offset = 1 - g[a].offset;
               var W = Math.min(n.r1, n.r2);
@@ -4344,15 +4344,15 @@ function zt() {
         fromElement: function(e, t, n, a) {
           var r = parseFloat(n) / (/%$/.test(n) ? 100 : 1);
           r = r < 0 ? 0 : r > 1 ? 1 : r, isNaN(r) && (r = 1);
-          var l = e.getElementsByTagName("stop"), u, d = e.getAttribute("gradientUnits") === "userSpaceOnUse" ? "pixels" : "percentage", g = e.getAttribute("gradientTransform") || "", v = [], m, y, w = 0, E = 0, L;
-          for (e.nodeName === "linearGradient" || e.nodeName === "LINEARGRADIENT" ? (u = "linear", m = s(e)) : (u = "radial", m = h(e)), y = l.length; y--; )
-            v.push(c(l[y], r));
-          L = f.parseTransformAttribute(g), i(t, m, a, d), d === "pixels" && (w = -t.left, E = -t.top);
+          var l = e.getElementsByTagName("stop"), u, d = e.getAttribute("gradientUnits") === "userSpaceOnUse" ? "pixels" : "percentage", g = e.getAttribute("gradientTransform") || "", m = [], v, y, w = 0, E = 0, L;
+          for (e.nodeName === "linearGradient" || e.nodeName === "LINEARGRADIENT" ? (u = "linear", v = s(e)) : (u = "radial", v = h(e)), y = l.length; y--; )
+            m.push(c(l[y], r));
+          L = f.parseTransformAttribute(g), i(t, v, a, d), d === "pixels" && (w = -t.left, E = -t.top);
           var W = new f.Gradient({
             id: e.getAttribute("id"),
             type: u,
-            coords: m,
-            colorStops: v,
+            coords: v,
+            colorStops: m,
             gradientUnits: d,
             gradientTransform: L,
             offsetX: w,
@@ -4951,12 +4951,12 @@ function zt() {
            * @param {Object} [options] Optional options to set for the {@link fabric.Image|image}.
            */
           __setBgOverlayImage: function(r, l, u, d) {
-            return typeof l == "string" ? f.util.loadImage(l, function(g, v) {
+            return typeof l == "string" ? f.util.loadImage(l, function(g, m) {
               if (g) {
-                var m = new f.Image(g, d);
-                this[r] = m, m.canvas = this;
+                var v = new f.Image(g, d);
+                this[r] = v, v.canvas = this;
               }
-              u && u(g, v);
+              u && u(g, m);
             }, this, d && d.crossOrigin) : (d && l.setOptions(d), this[r] = l, l && (l.canvas = this), u && u(l, !1)), this;
           },
           /**
@@ -5086,9 +5086,9 @@ function zt() {
            * @chainable true
            */
           setViewportTransform: function(r) {
-            var l = this._activeObject, u = this.backgroundImage, d = this.overlayImage, g, v, m;
-            for (this.viewportTransform = r, v = 0, m = this._objects.length; v < m; v++)
-              g = this._objects[v], g.group || g.setCoords(!0);
+            var l = this._activeObject, u = this.backgroundImage, d = this.overlayImage, g, m, v;
+            for (this.viewportTransform = r, m = 0, v = this._objects.length; m < v; m++)
+              g = this._objects[m], g.group || g.setCoords(!0);
             return l && l.setCoords(), u && u.setCoords(!0), d && d.setCoords(!0), this.calcViewportBoundaries(), this.renderOnAddRemove && this.requestRenderAll(), this;
           },
           /**
@@ -5264,17 +5264,17 @@ function zt() {
            * @param {string} property 'background' or 'overlay'
            */
           _renderBackgroundOrOverlay: function(r, l) {
-            var u = this[l + "Color"], d = this[l + "Image"], g = this.viewportTransform, v = this[l + "Vpt"];
+            var u = this[l + "Color"], d = this[l + "Image"], g = this.viewportTransform, m = this[l + "Vpt"];
             if (!(!u && !d)) {
               if (u) {
-                r.save(), r.beginPath(), r.moveTo(0, 0), r.lineTo(this.width, 0), r.lineTo(this.width, this.height), r.lineTo(0, this.height), r.closePath(), r.fillStyle = u.toLive ? u.toLive(r, this) : u, v && r.transform(g[0], g[1], g[2], g[3], g[4], g[5]), r.transform(1, 0, 0, 1, u.offsetX || 0, u.offsetY || 0);
-                var m = u.gradientTransform || u.patternTransform;
-                m && r.transform(m[0], m[1], m[2], m[3], m[4], m[5]), r.fill(), r.restore();
+                r.save(), r.beginPath(), r.moveTo(0, 0), r.lineTo(this.width, 0), r.lineTo(this.width, this.height), r.lineTo(0, this.height), r.closePath(), r.fillStyle = u.toLive ? u.toLive(r, this) : u, m && r.transform(g[0], g[1], g[2], g[3], g[4], g[5]), r.transform(1, 0, 0, 1, u.offsetX || 0, u.offsetY || 0);
+                var v = u.gradientTransform || u.patternTransform;
+                v && r.transform(v[0], v[1], v[2], v[3], v[4], v[5]), r.fill(), r.restore();
               }
               if (d) {
                 r.save();
                 var y = this.skipOffscreen;
-                this.skipOffscreen = v, v && r.transform(g[0], g[1], g[2], g[3], g[4], g[5]), d.render(r), this.skipOffscreen = y, r.restore();
+                this.skipOffscreen = m, m && r.transform(g[0], g[1], g[2], g[3], g[4], g[5]), d.render(r), this.skipOffscreen = y, r.restore();
               }
             }
           },
@@ -5444,8 +5444,8 @@ function zt() {
            * @private
            */
           __serializeBgOverlay: function(r, l) {
-            var u = {}, d = this.backgroundImage, g = this.overlayImage, v = this.backgroundColor, m = this.overlayColor;
-            return v && v.toObject ? v.excludeFromExport || (u.background = v.toObject(l)) : v && (u.background = v), m && m.toObject ? m.excludeFromExport || (u.overlay = m.toObject(l)) : m && (u.overlay = m), d && !d.excludeFromExport && (u.backgroundImage = this._toObject(d, r, l)), g && !g.excludeFromExport && (u.overlayImage = this._toObject(g, r, l)), u;
+            var u = {}, d = this.backgroundImage, g = this.overlayImage, m = this.backgroundColor, v = this.overlayColor;
+            return m && m.toObject ? m.excludeFromExport || (u.background = m.toObject(l)) : m && (u.background = m), v && v.toObject ? v.excludeFromExport || (u.overlay = v.toObject(l)) : v && (u.overlay = v), d && !d.excludeFromExport && (u.backgroundImage = this._toObject(d, r, l)), g && !g.excludeFromExport && (u.overlayImage = this._toObject(g, r, l)), u;
           },
           /* _TO_SVG_START_ */
           /**
@@ -5517,8 +5517,8 @@ function zt() {
            * @private
            */
           _setSVGHeader: function(r, l) {
-            var u = l.width || this.width, d = l.height || this.height, g, v = 'viewBox="0 0 ' + this.width + " " + this.height + '" ', m = f.Object.NUM_FRACTION_DIGITS;
-            l.viewBox ? v = 'viewBox="' + l.viewBox.x + " " + l.viewBox.y + " " + l.viewBox.width + " " + l.viewBox.height + '" ' : this.svgViewportTransformation && (g = this.viewportTransform, v = 'viewBox="' + o(-g[4] / g[0], m) + " " + o(-g[5] / g[3], m) + " " + o(this.width / g[0], m) + " " + o(this.height / g[3], m) + '" '), r.push(
+            var u = l.width || this.width, d = l.height || this.height, g, m = 'viewBox="0 0 ' + this.width + " " + this.height + '" ', v = f.Object.NUM_FRACTION_DIGITS;
+            l.viewBox ? m = 'viewBox="' + l.viewBox.x + " " + l.viewBox.y + " " + l.viewBox.width + " " + l.viewBox.height + '" ' : this.svgViewportTransformation && (g = this.viewportTransform, m = 'viewBox="' + o(-g[4] / g[0], v) + " " + o(-g[5] / g[3], v) + " " + o(this.width / g[0], v) + " " + o(this.height / g[3], v) + '" '), r.push(
               "<svg ",
               'xmlns="http://www.w3.org/2000/svg" ',
               'xmlns:xlink="http://www.w3.org/1999/xlink" ',
@@ -5529,7 +5529,7 @@ function zt() {
               'height="',
               d,
               '" ',
-              v,
+              m,
               `xml:space="preserve">
 `,
               "<desc>Created with Fabric.js ",
@@ -5559,13 +5559,13 @@ function zt() {
             var r = this, l = ["background", "overlay"].map(function(u) {
               var d = r[u + "Color"];
               if (d && d.toLive) {
-                var g = r[u + "Vpt"], v = r.viewportTransform, m = {
-                  width: r.width / (g ? v[0] : 1),
-                  height: r.height / (g ? v[3] : 1)
+                var g = r[u + "Vpt"], m = r.viewportTransform, v = {
+                  width: r.width / (g ? m[0] : 1),
+                  height: r.height / (g ? m[3] : 1)
                 };
                 return d.toSVG(
-                  m,
-                  { additionalTransform: g ? f.util.matrixToSVG(v) : "" }
+                  v,
+                  { additionalTransform: g ? f.util.matrixToSVG(m) : "" }
                 );
               }
             });
@@ -5579,16 +5579,16 @@ function zt() {
            * @return {String}
            */
           createSVGFontFacesMarkup: function() {
-            var r = "", l = {}, u, d, g, v, m, y, w, E, L, W = f.fontPaths, G = [];
+            var r = "", l = {}, u, d, g, m, v, y, w, E, L, W = f.fontPaths, G = [];
             for (this._objects.forEach(function H(N) {
               G.push(N), N._objects && N._objects.forEach(H);
             }), E = 0, L = G.length; E < L; E++)
               if (u = G[E], d = u.fontFamily, !(u.type.indexOf("text") === -1 || l[d] || !W[d]) && (l[d] = !0, !!u.styles)) {
                 g = u.styles;
-                for (m in g) {
-                  v = g[m];
-                  for (w in v)
-                    y = v[w], d = y.fontFamily, !l[d] && W[d] && (l[d] = !0);
+                for (v in g) {
+                  m = g[v];
+                  for (w in m)
+                    y = m[w], d = y.fontFamily, !l[d] && W[d] && (l[d] = !0);
                 }
               }
             for (var V in l)
@@ -5620,9 +5620,9 @@ function zt() {
            * @private
            */
           _setSVGObjects: function(r, l) {
-            var u, d, g, v = this._objects;
-            for (d = 0, g = v.length; d < g; d++)
-              u = v[d], !u.excludeFromExport && this._setSVGObject(r, u, l);
+            var u, d, g, m = this._objects;
+            for (d = 0, g = m.length; d < g; d++)
+              u = m[d], !u.excludeFromExport && this._setSVGObject(r, u, l);
           },
           /**
            * @private
@@ -5640,25 +5640,25 @@ function zt() {
            * @private
            */
           _setSVGBgOverlayColor: function(r, l) {
-            var u = this[l + "Color"], d = this.viewportTransform, g = this.width, v = this.height;
+            var u = this[l + "Color"], d = this.viewportTransform, g = this.width, m = this.height;
             if (u)
               if (u.toLive) {
-                var m = u.repeat, y = f.util.invertTransform(d), w = this[l + "Vpt"], E = w ? f.util.matrixToSVG(y) : "";
+                var v = u.repeat, y = f.util.invertTransform(d), w = this[l + "Vpt"], E = w ? f.util.matrixToSVG(y) : "";
                 r.push(
                   '<rect transform="' + E + " translate(",
                   g / 2,
                   ",",
-                  v / 2,
+                  m / 2,
                   ')"',
                   ' x="',
                   u.offsetX - g / 2,
                   '" y="',
-                  u.offsetY - v / 2,
+                  u.offsetY - m / 2,
                   '" ',
                   'width="',
-                  m === "repeat-y" || m === "no-repeat" ? u.source.width : g,
+                  v === "repeat-y" || v === "no-repeat" ? u.source.width : g,
                   '" height="',
-                  m === "repeat-x" || m === "no-repeat" ? u.source.height : v,
+                  v === "repeat-x" || v === "no-repeat" ? u.source.height : m,
                   '" fill="url(#SVGID_' + u.id + ')"',
                   `></rect>
 `
@@ -5724,12 +5724,12 @@ function zt() {
           sendBackwards: function(r, l) {
             if (!r)
               return this;
-            var u = this._activeObject, d, g, v, m, y, w = 0;
+            var u = this._activeObject, d, g, m, v, y, w = 0;
             if (r === u && r.type === "activeSelection")
               for (y = u._objects, d = 0; d < y.length; d++)
-                g = y[d], v = this._objects.indexOf(g), v > 0 + w && (m = v - 1, h(this._objects, g), this._objects.splice(m, 0, g)), w++;
+                g = y[d], m = this._objects.indexOf(g), m > 0 + w && (v = m - 1, h(this._objects, g), this._objects.splice(v, 0, g)), w++;
             else
-              v = this._objects.indexOf(r), v !== 0 && (m = this._findNewLowerIndex(r, v, l), h(this._objects, r), this._objects.splice(m, 0, r));
+              m = this._objects.indexOf(r), m !== 0 && (v = this._findNewLowerIndex(r, m, l), h(this._objects, r), this._objects.splice(v, 0, r));
             return this.renderOnAddRemove && this.requestRenderAll(), this;
           },
           /**
@@ -5739,8 +5739,8 @@ function zt() {
             var d, g;
             if (u)
               for (d = l, g = l - 1; g >= 0; --g) {
-                var v = r.intersectsWithObject(this._objects[g]) || r.isContainedWithinObject(this._objects[g]) || this._objects[g].isContainedWithinObject(r);
-                if (v) {
+                var m = r.intersectsWithObject(this._objects[g]) || r.isContainedWithinObject(this._objects[g]) || this._objects[g].isContainedWithinObject(r);
+                if (m) {
                   d = g;
                   break;
                 }
@@ -5763,23 +5763,23 @@ function zt() {
           bringForward: function(r, l) {
             if (!r)
               return this;
-            var u = this._activeObject, d, g, v, m, y, w = 0;
+            var u = this._activeObject, d, g, m, v, y, w = 0;
             if (r === u && r.type === "activeSelection")
               for (y = u._objects, d = y.length; d--; )
-                g = y[d], v = this._objects.indexOf(g), v < this._objects.length - 1 - w && (m = v + 1, h(this._objects, g), this._objects.splice(m, 0, g)), w++;
+                g = y[d], m = this._objects.indexOf(g), m < this._objects.length - 1 - w && (v = m + 1, h(this._objects, g), this._objects.splice(v, 0, g)), w++;
             else
-              v = this._objects.indexOf(r), v !== this._objects.length - 1 && (m = this._findNewUpperIndex(r, v, l), h(this._objects, r), this._objects.splice(m, 0, r));
+              m = this._objects.indexOf(r), m !== this._objects.length - 1 && (v = this._findNewUpperIndex(r, m, l), h(this._objects, r), this._objects.splice(v, 0, r));
             return this.renderOnAddRemove && this.requestRenderAll(), this;
           },
           /**
            * @private
            */
           _findNewUpperIndex: function(r, l, u) {
-            var d, g, v;
+            var d, g, m;
             if (u)
-              for (d = l, g = l + 1, v = this._objects.length; g < v; ++g) {
-                var m = r.intersectsWithObject(this._objects[g]) || r.isContainedWithinObject(this._objects[g]) || this._objects[g].isContainedWithinObject(r);
-                if (m) {
+              for (d = l, g = l + 1, m = this._objects.length; g < m; ++g) {
+                var v = r.intersectsWithObject(this._objects[g]) || r.isContainedWithinObject(this._objects[g]) || this._objects[g].isContainedWithinObject(r);
+                if (v) {
                   d = g;
                   break;
                 }
@@ -6814,7 +6814,7 @@ function zt() {
            */
           _setupCurrentTransform: function(i, e, t) {
             if (e) {
-              var n = this.getPointer(i), a = e.__corner, r = e.controls[a], l = t && a ? r.getActionHandler(i, e, r) : f.controlsUtils.dragHandler, u = this._getActionFromCorner(t, a, i, e), d = this._getOriginFromCorner(e, a), g = i[this.centeredKey], v = {
+              var n = this.getPointer(i), a = e.__corner, r = e.controls[a], l = t && a ? r.getActionHandler(i, e, r) : f.controlsUtils.dragHandler, u = this._getActionFromCorner(t, a, i, e), d = this._getOriginFromCorner(e, a), g = i[this.centeredKey], m = {
                 target: e,
                 action: u,
                 actionHandler: l,
@@ -6842,7 +6842,7 @@ function zt() {
                 altKey: g,
                 original: f.util.saveObjectTransform(e)
               };
-              this._shouldCenterTransform(e, u, g) && (v.originX = "center", v.originY = "center"), v.original.originX = d.x, v.original.originY = d.y, this._currentTransform = v, this._beforeTransform(i);
+              this._shouldCenterTransform(e, u, g) && (m.originX = "center", m.originY = "center"), m.original.originX = d.x, m.original.originY = d.y, this._currentTransform = m, this._beforeTransform(i);
             }
           },
           /**
@@ -6858,8 +6858,8 @@ function zt() {
            * @param {CanvasRenderingContext2D} ctx to draw the selection on
            */
           _drawSelection: function(i) {
-            var e = this._groupSelector, t = new f.Point(e.ex, e.ey), n = f.util.transformPoint(t, this.viewportTransform), a = new f.Point(e.ex + e.left, e.ey + e.top), r = f.util.transformPoint(a, this.viewportTransform), l = Math.min(n.x, r.x), u = Math.min(n.y, r.y), d = Math.max(n.x, r.x), g = Math.max(n.y, r.y), v = this.selectionLineWidth / 2;
-            this.selectionColor && (i.fillStyle = this.selectionColor, i.fillRect(l, u, d - l, g - u)), !(!this.selectionLineWidth || !this.selectionBorderColor) && (i.lineWidth = this.selectionLineWidth, i.strokeStyle = this.selectionBorderColor, l += v, u += v, d -= v, g -= v, f.Object.prototype._setLineDash.call(this, i, this.selectionDashArray), i.strokeRect(l, u, d - l, g - u));
+            var e = this._groupSelector, t = new f.Point(e.ex, e.ey), n = f.util.transformPoint(t, this.viewportTransform), a = new f.Point(e.ex + e.left, e.ey + e.top), r = f.util.transformPoint(a, this.viewportTransform), l = Math.min(n.x, r.x), u = Math.min(n.y, r.y), d = Math.max(n.x, r.x), g = Math.max(n.y, r.y), m = this.selectionLineWidth / 2;
+            this.selectionColor && (i.fillStyle = this.selectionColor, i.fillRect(l, u, d - l, g - u)), !(!this.selectionLineWidth || !this.selectionBorderColor) && (i.lineWidth = this.selectionLineWidth, i.strokeStyle = this.selectionBorderColor, l += m, u += m, d -= m, g -= m, f.Object.prototype._setLineDash.call(this, i, this.selectionDashArray), i.strokeRect(l, u, d - l, g - u));
           },
           /**
            * Method that determines what object we are clicking on
@@ -6880,8 +6880,8 @@ function zt() {
                   l = a, u = this.targets, this.targets = [];
                 else
                   return a;
-              var v = this._searchPossibleTargets(this._objects, n);
-              return i[this.altSelectionKey] && v && l && v !== l && (v = l, this.targets = u), v;
+              var m = this._searchPossibleTargets(this._objects, n);
+              return i[this.altSelectionKey] && m && l && m !== l && (m = l, this.targets = u), m;
             }
           },
           /**
@@ -7471,22 +7471,22 @@ function zt() {
                 var g = a === this._activeObject;
                 this._maybeGroupObjects(n), u || (u = this._shouldRender(a) || !g && a === this._activeObject);
               }
-              var v, m;
+              var m, v;
               if (a) {
-                if (v = a._findTargetCorner(
+                if (m = a._findTargetCorner(
                   this.getPointer(n, !0),
                   f.util.isTouchEvent(n)
                 ), a.selectable && a !== this._activeObject && a.activeOn === "up")
                   this.setActiveObject(a, n), u = !0;
                 else {
-                  var y = a.controls[v], w = y && y.getMouseUpHandler(n, a, y);
-                  w && (m = this.getPointer(n), w(n, r, m.x, m.y));
+                  var y = a.controls[m], w = y && y.getMouseUpHandler(n, a, y);
+                  w && (v = this.getPointer(n), w(n, r, v.x, v.y));
                 }
                 a.isMoving = !1;
               }
-              if (r && (r.target !== a || r.corner !== v)) {
+              if (r && (r.target !== a || r.corner !== m)) {
                 var E = r.target && r.target.controls[r.corner], L = E && E.getMouseUpHandler(n, a, y);
-                m = m || this.getPointer(n), L && L(n, r, m.x, m.y);
+                v = v || this.getPointer(n), L && L(n, r, v.x, v.y);
               }
               this._setCursorFromEvent(n, a), this._handleEvent(n, "up", i, d), this._groupSelector = null, this._currentTransform = null, a && (a.__corner = 0), u ? this.requestRenderAll() : d || this.renderTop();
             }
@@ -7531,8 +7531,8 @@ function zt() {
               transform: this._currentTransform
             };
             a === "up" && (g.currentTarget = this.findTarget(n), g.currentSubTargets = this.targets), this.fire("mouse:" + a, g), u && u.fire("mouse" + a, g);
-            for (var v = 0; v < d.length; v++)
-              d[v].fire("mouse" + a, g);
+            for (var m = 0; m < d.length; m++)
+              d[m].fire("mouse" + a, g);
           },
           /**
            * @private
@@ -7616,8 +7616,8 @@ function zt() {
                 );
                 if (a.__corner = g, a === this._activeObject && (g || !u)) {
                   this._setupCurrentTransform(n, a, d);
-                  var v = a.controls[g], r = this.getPointer(n), m = v && v.getMouseDownHandler(n, a, v);
-                  m && m(n, this._currentTransform, r.x, r.y);
+                  var m = a.controls[g], r = this.getPointer(n), v = m && m.getMouseDownHandler(n, a, m);
+                  v && v(n, this._currentTransform, r.x, r.y);
                 }
               }
               this._handleEvent(n, "down"), (l || u) && this.requestRenderAll();
@@ -7726,8 +7726,8 @@ function zt() {
            * @private
            */
           fireSyntheticInOutEvents: function(n, a, r) {
-            var l, u, d = r.oldTarget, g, v, m = d !== n, y = r.canvasEvtIn, w = r.canvasEvtOut;
-            m && (l = { e: a, target: n, previousTarget: d }, u = { e: a, target: d, nextTarget: n }), v = n && m, g = d && m, g && (w && this.fire(w, u), d.fire(r.evtOut, u)), v && (y && this.fire(y, l), n.fire(r.evtIn, l));
+            var l, u, d = r.oldTarget, g, m, v = d !== n, y = r.canvasEvtIn, w = r.canvasEvtOut;
+            v && (l = { e: a, target: n, previousTarget: d }, u = { e: a, target: d, nextTarget: n }), m = n && v, g = d && v, g && (w && this.fire(w, u), d.fire(r.evtOut, u)), m && (y && this.fire(y, l), n.fire(r.evtIn, l));
           },
           /**
            * Method that defines actions when an Event Mouse Wheel
@@ -7748,8 +7748,8 @@ function zt() {
            * @private
            */
           _performTransformAction: function(n, a, r) {
-            var l = r.x, u = r.y, d = a.action, g = !1, v = a.actionHandler;
-            v && (g = v(n, a, l, u)), d === "drag" && g && (a.target.isMoving = !0, this.setCursor(a.target.moveCursor || this.moveCursor)), a.actionPerformed = a.actionPerformed || g;
+            var l = r.x, u = r.y, d = a.action, g = !1, m = a.actionHandler;
+            m && (g = m(n, a, l, u)), d === "drag" && g && (a.target.isMoving = !0, this.setCursor(a.target.moveCursor || this.moveCursor)), a.actionPerformed = a.actionPerformed || g;
           },
           /**
            * @private
@@ -7843,8 +7843,8 @@ function zt() {
           _collectObjects: function(h) {
             for (var o = [], i, e = this._groupSelector.ex, t = this._groupSelector.ey, n = e + this._groupSelector.left, a = t + this._groupSelector.top, r = new f.Point(c(e, n), c(t, a)), l = new f.Point(s(e, n), s(t, a)), u = !this.selectionFullyContained, d = e === n && t === a, g = this._objects.length; g-- && (i = this._objects[g], !(!(!i || !i.selectable || !i.visible) && (u && i.intersectsWithRect(r, l, !0) || i.isContainedWithinRect(r, l, !0) || u && i.containsPoint(r, null, !0) || u && i.containsPoint(l, null, !0)) && (o.push(i), d))); )
               ;
-            return o.length > 1 && (o = o.filter(function(v) {
-              return !v.onSelect({ e: h });
+            return o.length > 1 && (o = o.filter(function(m) {
+              return !m.onSelect({ e: h });
             })), o;
           },
           /**
@@ -7912,8 +7912,8 @@ function zt() {
            */
           toCanvasElement: function(c, s) {
             c = c || 1, s = s || {};
-            var h = (s.width || this.width) * c, o = (s.height || this.height) * c, i = this.getZoom(), e = this.width, t = this.height, n = i * c, a = this.viewportTransform, r = (a[4] - (s.left || 0)) * c, l = (a[5] - (s.top || 0)) * c, u = this.interactive, d = [n, 0, 0, n, r, l], g = this.enableRetinaScaling, v = f.util.createCanvasElement(), m = this.contextTop;
-            return v.width = h, v.height = o, this.contextTop = null, this.enableRetinaScaling = !1, this.interactive = !1, this.viewportTransform = d, this.width = h, this.height = o, this.calcViewportBoundaries(), this.renderCanvas(v.getContext("2d"), this._objects), this.viewportTransform = a, this.width = e, this.height = t, this.calcViewportBoundaries(), this.interactive = u, this.enableRetinaScaling = g, this.contextTop = m, v;
+            var h = (s.width || this.width) * c, o = (s.height || this.height) * c, i = this.getZoom(), e = this.width, t = this.height, n = i * c, a = this.viewportTransform, r = (a[4] - (s.left || 0)) * c, l = (a[5] - (s.top || 0)) * c, u = this.interactive, d = [n, 0, 0, n, r, l], g = this.enableRetinaScaling, m = f.util.createCanvasElement(), v = this.contextTop;
+            return m.width = h, m.height = o, this.contextTop = null, this.enableRetinaScaling = !1, this.interactive = !1, this.viewportTransform = d, this.width = h, this.height = o, this.calcViewportBoundaries(), this.renderCanvas(m.getContext("2d"), this._objects), this.viewportTransform = a, this.width = e, this.height = t, this.calcViewportBoundaries(), this.interactive = u, this.enableRetinaScaling = g, this.contextTop = v, m;
           }
         }
       );
@@ -8615,10 +8615,10 @@ function zt() {
            * @return {Object}.zoomY zoomY zoom value to unscale the canvas before drawing cache
            */
           _limitCacheSize: function(r) {
-            var l = s.perfLimitSizeTotal, u = r.width, d = r.height, g = s.maxCacheSideLimit, v = s.minCacheSideLimit;
+            var l = s.perfLimitSizeTotal, u = r.width, d = r.height, g = s.maxCacheSideLimit, m = s.minCacheSideLimit;
             if (u <= g && d <= g && u * d <= l)
-              return u < v && (r.width = v), d < v && (r.height = v), r;
-            var m = u / d, y = s.util.limitDimsByArea(m, l), w = s.util.capValue, E = w(v, y.x, g), L = w(v, y.y, g);
+              return u < m && (r.width = m), d < m && (r.height = m), r;
+            var v = u / d, y = s.util.limitDimsByArea(v, l), w = s.util.capValue, E = w(m, y.x, g), L = w(m, y.y, g);
             return u > E && (r.zoomX /= u / E, r.width = E, r.capped = !0), d > L && (r.zoomY /= d / L, r.height = L, r.capped = !0), r;
           },
           /**
@@ -8659,8 +8659,8 @@ function zt() {
               if (this === l && u.slice && u.slice(0, 5) === "scale")
                 return !1;
             }
-            var d = this._cacheCanvas, g = this._limitCacheSize(this._getCacheCanvasDimensions()), v = g.width, m = g.height, y, w, E = g.zoomX, L = g.zoomY, W = v !== this.cacheWidth || m !== this.cacheHeight, G = this.zoomX !== E || this.zoomY !== L, V = W || G;
-            return V ? (W ? (d.width = v, d.height = m) : (this._cacheContext.setTransform(1, 0, 0, 1, 0, 0), this._cacheContext.clearRect(0, 0, d.width, d.height)), y = g.x / 2, w = g.y / 2, this.cacheTranslationX = Math.round(d.width / 2 - y) + y, this.cacheTranslationY = Math.round(d.height / 2 - w) + w, this.cacheWidth = v, this.cacheHeight = m, this._cacheContext.translate(this.cacheTranslationX, this.cacheTranslationY), this._cacheContext.scale(E, L), this.zoomX = E, this.zoomY = L, !0) : !1;
+            var d = this._cacheCanvas, g = this._limitCacheSize(this._getCacheCanvasDimensions()), m = g.width, v = g.height, y, w, E = g.zoomX, L = g.zoomY, W = m !== this.cacheWidth || v !== this.cacheHeight, G = this.zoomX !== E || this.zoomY !== L, V = W || G;
+            return V ? (W ? (d.width = m, d.height = v) : (this._cacheContext.setTransform(1, 0, 0, 1, 0, 0), this._cacheContext.clearRect(0, 0, d.width, d.height)), y = g.x / 2, w = g.y / 2, this.cacheTranslationX = Math.round(d.width / 2 - y) + y, this.cacheTranslationY = Math.round(d.height / 2 - w) + w, this.cacheWidth = m, this.cacheHeight = v, this._cacheContext.translate(this.cacheTranslationX, this.cacheTranslationY), this._cacheContext.scale(E, L), this.zoomX = E, this.zoomY = L, !0) : !1;
           },
           /**
            * Sets object's properties from options
@@ -8989,8 +8989,8 @@ function zt() {
            * @param {Object} [styleOverride] properties to override the object style
            */
           _renderControls: function(r, l) {
-            var u = this.getViewportTransform(), d = this.calcTransformMatrix(), g, v, m;
-            l = l || {}, v = typeof l.hasBorders < "u" ? l.hasBorders : this.hasBorders, m = typeof l.hasControls < "u" ? l.hasControls : this.hasControls, d = s.util.multiplyTransformMatrices(u, d), g = s.util.qrDecompose(d), r.save(), r.translate(g.translateX, g.translateY), r.lineWidth = 1 * this.borderScaleFactor, this.group || (r.globalAlpha = this.isMoving ? this.borderOpacityWhenMoving : 1), this.flipX && (g.angle -= 180), r.rotate(t(this.group ? g.angle : this.angle)), l.forActiveSelection || this.group ? v && this.drawBordersInGroup(r, g, l) : v && this.drawBorders(r, l), m && this.drawControls(r, l), r.restore();
+            var u = this.getViewportTransform(), d = this.calcTransformMatrix(), g, m, v;
+            l = l || {}, m = typeof l.hasBorders < "u" ? l.hasBorders : this.hasBorders, v = typeof l.hasControls < "u" ? l.hasControls : this.hasControls, d = s.util.multiplyTransformMatrices(u, d), g = s.util.qrDecompose(d), r.save(), r.translate(g.translateX, g.translateY), r.lineWidth = 1 * this.borderScaleFactor, this.group || (r.globalAlpha = this.isMoving ? this.borderOpacityWhenMoving : 1), this.flipX && (g.angle -= 180), r.rotate(t(this.group ? g.angle : this.angle)), l.forActiveSelection || this.group ? m && this.drawBordersInGroup(r, g, l) : m && this.drawBorders(r, l), v && this.drawControls(r, l), r.restore();
           },
           /**
            * @private
@@ -8998,8 +8998,8 @@ function zt() {
            */
           _setShadow: function(r) {
             if (this.shadow) {
-              var l = this.shadow, u = this.canvas, d, g = u && u.viewportTransform[0] || 1, v = u && u.viewportTransform[3] || 1;
-              l.nonScaling ? d = { scaleX: 1, scaleY: 1 } : d = this.getObjectScaling(), u && u._isRetinaScaling() && (g *= s.devicePixelRatio, v *= s.devicePixelRatio), r.shadowColor = l.color, r.shadowBlur = l.blur * s.browserShadowBlurConstant * (g + v) * (d.scaleX + d.scaleY) / 4, r.shadowOffsetX = l.offsetX * g * d.scaleX, r.shadowOffsetY = l.offsetY * v * d.scaleY;
+              var l = this.shadow, u = this.canvas, d, g = u && u.viewportTransform[0] || 1, m = u && u.viewportTransform[3] || 1;
+              l.nonScaling ? d = { scaleX: 1, scaleY: 1 } : d = this.getObjectScaling(), u && u._isRetinaScaling() && (g *= s.devicePixelRatio, m *= s.devicePixelRatio), r.shadowColor = l.color, r.shadowBlur = l.blur * s.browserShadowBlurConstant * (g + m) * (d.scaleX + d.scaleY) / 4, r.shadowOffsetX = l.offsetX * g * d.scaleX, r.shadowOffsetY = l.offsetY * m * d.scaleY;
             }
           },
           /**
@@ -9070,13 +9070,13 @@ function zt() {
            * @param {fabric.Gradient} filler a fabric gradient instance
            */
           _applyPatternForTransformedGradient: function(r, l) {
-            var u = this._limitCacheSize(this._getCacheCanvasDimensions()), d = s.util.createCanvasElement(), g, v = this.canvas.getRetinaScaling(), m = u.x / this.scaleX / v, y = u.y / this.scaleY / v;
-            d.width = Math.ceil(m), d.height = Math.ceil(y), g = d.getContext("2d"), g.beginPath(), g.moveTo(0, 0), g.lineTo(m, 0), g.lineTo(m, y), g.lineTo(0, y), g.closePath(), g.translate(m / 2, y / 2), g.scale(
-              u.zoomX / this.scaleX / v,
-              u.zoomY / this.scaleY / v
+            var u = this._limitCacheSize(this._getCacheCanvasDimensions()), d = s.util.createCanvasElement(), g, m = this.canvas.getRetinaScaling(), v = u.x / this.scaleX / m, y = u.y / this.scaleY / m;
+            d.width = Math.ceil(v), d.height = Math.ceil(y), g = d.getContext("2d"), g.beginPath(), g.moveTo(0, 0), g.lineTo(v, 0), g.lineTo(v, y), g.lineTo(0, y), g.closePath(), g.translate(v / 2, y / 2), g.scale(
+              u.zoomX / this.scaleX / m,
+              u.zoomY / this.scaleY / m
             ), this._applyPatternGradientTransform(g, l), g.fillStyle = l.toLive(r), g.fill(), r.translate(-this.width / 2 - this.strokeWidth / 2, -this.height / 2 - this.strokeWidth / 2), r.scale(
-              v * this.scaleX / u.zoomX,
-              v * this.scaleY / u.zoomY
+              m * this.scaleX / u.zoomX,
+              m * this.scaleY / u.zoomY
             ), r.strokeStyle = g.createPattern(d, "no-repeat");
           },
           /**
@@ -9161,10 +9161,10 @@ function zt() {
            */
           toCanvasElement: function(r) {
             r || (r = {});
-            var l = s.util, u = l.saveObjectTransform(this), d = this.group, g = this.shadow, v = Math.abs, m = (r.multiplier || 1) * (r.enableRetinaScaling ? s.devicePixelRatio : 1);
+            var l = s.util, u = l.saveObjectTransform(this), d = this.group, g = this.shadow, m = Math.abs, v = (r.multiplier || 1) * (r.enableRetinaScaling ? s.devicePixelRatio : 1);
             delete this.group, r.withoutTransform && l.resetObjectTransform(this), r.withoutShadow && (this.shadow = null);
             var y = s.util.createCanvasElement(), w = this.getBoundingRect(!0, !0), E = this.shadow, L, W = { x: 0, y: 0 }, G, V, H;
-            E && (G = E.blur, E.nonScaling ? L = { scaleX: 1, scaleY: 1 } : L = this.getObjectScaling(), W.x = 2 * Math.round(v(E.offsetX) + G) * v(L.scaleX), W.y = 2 * Math.round(v(E.offsetY) + G) * v(L.scaleY)), V = w.width + W.x, H = w.height + W.y, y.width = Math.ceil(V), y.height = Math.ceil(H);
+            E && (G = E.blur, E.nonScaling ? L = { scaleX: 1, scaleY: 1 } : L = this.getObjectScaling(), W.x = 2 * Math.round(m(E.offsetX) + G) * m(L.scaleX), W.y = 2 * Math.round(m(E.offsetY) + G) * m(L.scaleY)), V = w.width + W.x, H = w.height + W.y, y.width = Math.ceil(V), y.height = Math.ceil(H);
             var N = new s.StaticCanvas(y, {
               enableRetinaScaling: !1,
               renderOnAddRemove: !1,
@@ -9173,7 +9173,7 @@ function zt() {
             r.format === "jpeg" && (N.backgroundColor = "#fff"), this.setPositionByOrigin(new s.Point(N.width / 2, N.height / 2), "center", "center");
             var K = this.canvas;
             N.add(this);
-            var $ = N.toCanvasElement(m || 1, r);
+            var $ = N.toCanvasElement(v || 1, r);
             return this.shadow = g, this.set("canvas", K), d && (this.group = d), this.set(u).setCoords(), N._objects = [], N.dispose(), N = null, $;
           },
           /**
@@ -9317,10 +9317,10 @@ function zt() {
         }
       ), s.util.createAccessors && s.util.createAccessors(s.Object), h(s.Object.prototype, s.Observable), s.Object.NUM_FRACTION_DIGITS = 2, s.Object.ENLIVEN_PROPS = ["clipPath"], s.Object._fromObject = function(r, l, u, d) {
         var g = s[r];
-        l = o(l, !0), s.util.enlivenPatterns([l.fill, l.stroke], function(v) {
-          typeof v[0] < "u" && (l.fill = v[0]), typeof v[1] < "u" && (l.stroke = v[1]), s.util.enlivenObjectEnlivables(l, l, function() {
-            var m = d ? new g(l[d], l) : new g(l);
-            u && u(m);
+        l = o(l, !0), s.util.enlivenPatterns([l.fill, l.stroke], function(m) {
+          typeof m[0] < "u" && (l.fill = m[0]), typeof m[1] < "u" && (l.stroke = m[1]), s.util.enlivenObjectEnlivables(l, l, function() {
+            var v = d ? new g(l[d], l) : new g(l);
+            u && u(v);
           });
         });
       }, s.Object.__uid = 0);
@@ -9689,8 +9689,8 @@ function zt() {
           // remove yi, not used but left code here just in case.
           _findCrossPoints: function(e, t) {
             var n, a, r, l, u, d = 0, g;
-            for (var v in t)
-              if (g = t[v], !(g.o.y < e.y && g.d.y < e.y) && !(g.o.y >= e.y && g.d.y >= e.y) && (g.o.x === g.d.x && g.o.x >= e.x ? u = g.o.x : (n = 0, a = (g.d.y - g.o.y) / (g.d.x - g.o.x), r = e.y - n * e.x, l = g.o.y - a * g.o.x, u = -(r - l) / (n - a)), u >= e.x && (d += 1), d === 2))
+            for (var m in t)
+              if (g = t[m], !(g.o.y < e.y && g.d.y < e.y) && !(g.o.y >= e.y && g.d.y >= e.y) && (g.o.x === g.d.x && g.o.x >= e.x ? u = g.o.x : (n = 0, a = (g.d.y - g.o.y) / (g.d.x - g.o.x), r = e.y - n * e.x, l = g.o.y - a * g.o.x, u = -(r - l) / (n - a)), u >= e.x && (d += 1), d === 2))
                 break;
             return d;
           },
@@ -9762,18 +9762,18 @@ function zt() {
             return this.scale(e / this.height / n);
           },
           calcLineCoords: function() {
-            var e = this.getViewportTransform(), t = this.padding, n = h(this.angle), a = s.cos(n), r = s.sin(n), l = a * t, u = r * t, d = l + u, g = l - u, v = this.calcACoords(), m = {
-              tl: i(v.tl, e),
-              tr: i(v.tr, e),
-              bl: i(v.bl, e),
-              br: i(v.br, e)
+            var e = this.getViewportTransform(), t = this.padding, n = h(this.angle), a = s.cos(n), r = s.sin(n), l = a * t, u = r * t, d = l + u, g = l - u, m = this.calcACoords(), v = {
+              tl: i(m.tl, e),
+              tr: i(m.tr, e),
+              bl: i(m.bl, e),
+              br: i(m.br, e)
             };
-            return t && (m.tl.x -= g, m.tl.y -= d, m.tr.x += d, m.tr.y -= g, m.bl.x -= d, m.bl.y += g, m.br.x += g, m.br.y += d), m;
+            return t && (v.tl.x -= g, v.tl.y -= d, v.tr.x += d, v.tr.y -= g, v.bl.x -= d, v.bl.y += g, v.br.x += g, v.br.y += d), v;
           },
           calcOCoords: function() {
             var e = this._calcRotateMatrix(), t = this._calcTranslateMatrix(), n = this.getViewportTransform(), a = o(n, t), r = o(a, e), r = o(r, [1 / n[0], 0, 0, 1 / n[3], 0, 0]), l = this._calculateCurrentDimensions(), u = {};
-            return this.forEachControl(function(d, g, v) {
-              u[g] = d.positionHandler(l, r, v);
+            return this.forEachControl(function(d, g, m) {
+              u[g] = d.positionHandler(l, r, m);
             }), u;
           },
           calcACoords: function() {
@@ -9976,9 +9976,9 @@ function zt() {
            * @return {String}
            */
           getSvgStyles: function(h) {
-            var o = this.fillRule ? this.fillRule : "nonzero", i = this.strokeWidth ? this.strokeWidth : "0", e = this.strokeDashArray ? this.strokeDashArray.join(" ") : "none", t = this.strokeDashOffset ? this.strokeDashOffset : "0", n = this.strokeLineCap ? this.strokeLineCap : "butt", a = this.strokeLineJoin ? this.strokeLineJoin : "miter", r = this.strokeMiterLimit ? this.strokeMiterLimit : "4", l = typeof this.opacity < "u" ? this.opacity : "1", u = this.visible ? "" : " visibility: hidden;", d = h ? "" : this.getSvgFilter(), g = c("fill", this.fill), v = c("stroke", this.stroke);
+            var o = this.fillRule ? this.fillRule : "nonzero", i = this.strokeWidth ? this.strokeWidth : "0", e = this.strokeDashArray ? this.strokeDashArray.join(" ") : "none", t = this.strokeDashOffset ? this.strokeDashOffset : "0", n = this.strokeLineCap ? this.strokeLineCap : "butt", a = this.strokeLineJoin ? this.strokeLineJoin : "miter", r = this.strokeMiterLimit ? this.strokeMiterLimit : "4", l = typeof this.opacity < "u" ? this.opacity : "1", u = this.visible ? "" : " visibility: hidden;", d = h ? "" : this.getSvgFilter(), g = c("fill", this.fill), m = c("stroke", this.stroke);
             return [
-              v,
+              m,
               "stroke-width: ",
               i,
               "; ",
@@ -10116,30 +10116,30 @@ function zt() {
            */
           _createBaseSVGMarkup: function(h, o) {
             o = o || {};
-            var i = o.noStyle, e = o.reviver, t = i ? "" : 'style="' + this.getSvgStyles() + '" ', n = o.withShadow ? 'style="' + this.getSvgFilter() + '" ' : "", a = this.clipPath, r = this.strokeUniform ? 'vector-effect="non-scaling-stroke" ' : "", l = a && a.absolutePositioned, u = this.stroke, d = this.fill, g = this.shadow, v, m = [], y, w = h.indexOf("COMMON_PARTS"), E = o.additionalTransform;
+            var i = o.noStyle, e = o.reviver, t = i ? "" : 'style="' + this.getSvgStyles() + '" ', n = o.withShadow ? 'style="' + this.getSvgFilter() + '" ' : "", a = this.clipPath, r = this.strokeUniform ? 'vector-effect="non-scaling-stroke" ' : "", l = a && a.absolutePositioned, u = this.stroke, d = this.fill, g = this.shadow, m, v = [], y, w = h.indexOf("COMMON_PARTS"), E = o.additionalTransform;
             return a && (a.clipPathId = "CLIPPATH_" + f.Object.__uid++, y = '<clipPath id="' + a.clipPathId + `" >
 ` + a.toClipPathSVG(e) + `</clipPath>
-`), l && m.push(
+`), l && v.push(
               "<g ",
               n,
               this.getSvgCommons(),
               ` >
 `
-            ), m.push(
+            ), v.push(
               "<g ",
               this.getSvgTransform(!1),
               l ? "" : n + this.getSvgCommons(),
               ` >
 `
-            ), v = [
+            ), m = [
               t,
               r,
               i ? "" : this.addPaintOrder(),
               " ",
               E ? 'transform="' + E + '" ' : ""
-            ].join(""), h[w] = v, d && d.toLive && m.push(d.toSVG(this)), u && u.toLive && m.push(u.toSVG(this)), g && m.push(g.toSVG(this)), a && m.push(y), m.push(h.join("")), m.push(`</g>
-`), l && m.push(`</g>
-`), e ? e(m.join("")) : m.join("");
+            ].join(""), h[w] = m, d && d.toLive && v.push(d.toSVG(this)), u && u.toLive && v.push(u.toSVG(this)), g && v.push(g.toSVG(this)), a && v.push(y), v.push(h.join("")), v.push(`</g>
+`), l && v.push(`</g>
+`), e ? e(v.join("")) : v.join("");
           },
           addPaintOrder: function() {
             return this.paintFirst !== "fill" ? ' paint-order="' + this.paintFirst + '" ' : "";
@@ -10748,14 +10748,14 @@ function zt() {
         r.points = [t.x1, t.y1, t.x2, t.y2], s.Object._fromObject("Line", r, a, "points");
       };
       function e(t, n) {
-        var a = t.origin, r = t.axis1, l = t.axis2, u = t.dimension, d = n.nearest, g = n.center, v = n.farthest;
+        var a = t.origin, r = t.axis1, l = t.axis2, u = t.dimension, d = n.nearest, g = n.center, m = n.farthest;
         return function() {
           switch (this.get(a)) {
             case d:
               return Math.min(this.get(r), this.get(l));
             case g:
               return Math.min(this.get(r), this.get(l)) + 0.5 * this.get(u);
-            case v:
+            case m:
               return Math.max(this.get(r), this.get(l));
           }
         };
@@ -10833,13 +10833,13 @@ function zt() {
 `
               ];
             else {
-              var a = h(this.startAngle), r = h(this.endAngle), l = this.radius, u = s.util.cos(a) * l, d = s.util.sin(a) * l, g = s.util.cos(r) * l, v = s.util.sin(r) * l, m = n > 180 ? "1" : "0";
+              var a = h(this.startAngle), r = h(this.endAngle), l = this.radius, u = s.util.cos(a) * l, d = s.util.sin(a) * l, g = s.util.cos(r) * l, m = s.util.sin(r) * l, v = n > 180 ? "1" : "0";
               i = [
                 '<path d="M ' + u + " " + d,
                 " A " + l + " " + l,
                 " 0 ",
-                +m + " 1",
-                " " + g + " " + v,
+                +v + " 1",
+                " " + g + " " + m,
                 '" ',
                 "COMMON_PARTS",
                 ` />
@@ -11432,34 +11432,34 @@ function zt() {
            * @param {CanvasRenderingContext2D} ctx context to render path on
            */
           _renderPathCommands: function(n) {
-            var a, r = 0, l = 0, u = 0, d = 0, g = 0, v = 0, m = -this.pathOffset.x, y = -this.pathOffset.y;
+            var a, r = 0, l = 0, u = 0, d = 0, g = 0, m = 0, v = -this.pathOffset.x, y = -this.pathOffset.y;
             n.beginPath();
             for (var w = 0, E = this.path.length; w < E; ++w)
               switch (a = this.path[w], a[0]) {
                 // first letter
                 case "L":
-                  u = a[1], d = a[2], n.lineTo(u + m, d + y);
+                  u = a[1], d = a[2], n.lineTo(u + v, d + y);
                   break;
                 case "M":
-                  u = a[1], d = a[2], r = u, l = d, n.moveTo(u + m, d + y);
+                  u = a[1], d = a[2], r = u, l = d, n.moveTo(u + v, d + y);
                   break;
                 case "C":
-                  u = a[5], d = a[6], g = a[3], v = a[4], n.bezierCurveTo(
-                    a[1] + m,
+                  u = a[5], d = a[6], g = a[3], m = a[4], n.bezierCurveTo(
+                    a[1] + v,
                     a[2] + y,
-                    g + m,
-                    v + y,
-                    u + m,
+                    g + v,
+                    m + y,
+                    u + v,
                     d + y
                   );
                   break;
                 case "Q":
                   n.quadraticCurveTo(
-                    a[1] + m,
+                    a[1] + v,
                     a[2] + y,
-                    a[3] + m,
+                    a[3] + v,
                     a[4] + y
-                  ), u = a[3], d = a[4], g = a[1], v = a[2];
+                  ), u = a[3], d = a[4], g = a[1], m = a[2];
                   break;
                 case "z":
                 case "Z":
@@ -11557,17 +11557,17 @@ function zt() {
            * @private
            */
           _calcDimensions: function() {
-            for (var n = [], a = [], r, l = 0, u = 0, d = 0, g = 0, v, m = 0, y = this.path.length; m < y; ++m) {
-              switch (r = this.path[m], r[0]) {
+            for (var n = [], a = [], r, l = 0, u = 0, d = 0, g = 0, m, v = 0, y = this.path.length; v < y; ++v) {
+              switch (r = this.path[v], r[0]) {
                 // first letter
                 case "L":
-                  d = r[1], g = r[2], v = [];
+                  d = r[1], g = r[2], m = [];
                   break;
                 case "M":
-                  d = r[1], g = r[2], l = d, u = g, v = [];
+                  d = r[1], g = r[2], l = d, u = g, m = [];
                   break;
                 case "C":
-                  v = s.util.getBoundsOfCurve(
+                  m = s.util.getBoundsOfCurve(
                     d,
                     g,
                     r[1],
@@ -11579,7 +11579,7 @@ function zt() {
                   ), d = r[5], g = r[6];
                   break;
                 case "Q":
-                  v = s.util.getBoundsOfCurve(
+                  m = s.util.getBoundsOfCurve(
                     d,
                     g,
                     r[1],
@@ -11595,7 +11595,7 @@ function zt() {
                   d = l, g = u;
                   break;
               }
-              v.forEach(function(H) {
+              m.forEach(function(H) {
                 n.push(H.x), a.push(H.y);
               }), n.push(d), a.push(g);
             }
@@ -11936,8 +11936,8 @@ function zt() {
            * @private
            */
           _calcBounds: function(i) {
-            for (var e = [], t = [], n, a, r, l = ["tr", "br", "bl", "tl"], u = 0, d = this._objects.length, g, v = l.length; u < d; ++u) {
-              for (n = this._objects[u], r = n.calcACoords(), g = 0; g < v; g++)
+            for (var e = [], t = [], n, a, r, l = ["tr", "br", "bl", "tl"], u = 0, d = this._objects.length, g, m = l.length; u < d; ++u) {
+              for (n = this._objects[u], r = n.calcACoords(), g = 0; g < m; g++)
                 a = l[g], e.push(r[a].x), t.push(r[a].y);
               n.aCoords = r;
             }
@@ -12481,8 +12481,8 @@ function zt() {
           _renderFill: function(h) {
             var o = this._element;
             if (o) {
-              var i = this._filterScalingX, e = this._filterScalingY, t = this.width, n = this.height, a = Math.min, r = Math.max, l = r(this.cropX, 0), u = r(this.cropY, 0), d = o.naturalWidth || o.width, g = o.naturalHeight || o.height, v = l * i, m = u * e, y = a(t * i, d - v), w = a(n * e, g - m), E = -t / 2, L = -n / 2, W = a(t, d / i - l), G = a(n, g / e - u);
-              o && h.drawImage(o, v, m, y, w, E, L, W, G);
+              var i = this._filterScalingX, e = this._filterScalingY, t = this.width, n = this.height, a = Math.min, r = Math.max, l = r(this.cropX, 0), u = r(this.cropY, 0), d = o.naturalWidth || o.width, g = o.naturalHeight || o.height, m = l * i, v = u * e, y = a(t * i, d - m), w = a(n * e, g - v), E = -t / 2, L = -n / 2, W = a(t, d / i - l), G = a(n, g / e - u);
+              o && h.drawImage(o, m, v, y, w, E, L, W, G);
             }
           },
           /**
@@ -12544,8 +12544,8 @@ function zt() {
            * @return {Object}
            */
           parsePreserveAspectRatioAttribute: function() {
-            var h = f.util.parsePreserveAspectRatioAttribute(this.preserveAspectRatio || ""), o = this._element.width, i = this._element.height, e = 1, t = 1, n = 0, a = 0, r = 0, l = 0, u, d = this.width, g = this.height, v = { width: d, height: g };
-            return h && (h.alignX !== "none" || h.alignY !== "none") ? (h.meetOrSlice === "meet" && (e = t = f.util.findScaleToFit(this._element, v), u = (d - o * e) / 2, h.alignX === "Min" && (n = -u), h.alignX === "Max" && (n = u), u = (g - i * t) / 2, h.alignY === "Min" && (a = -u), h.alignY === "Max" && (a = u)), h.meetOrSlice === "slice" && (e = t = f.util.findScaleToCover(this._element, v), u = o - d / e, h.alignX === "Mid" && (r = u / 2), h.alignX === "Max" && (r = u), u = i - g / t, h.alignY === "Mid" && (l = u / 2), h.alignY === "Max" && (l = u), o = d / e, i = g / t)) : (e = d / o, t = g / i), {
+            var h = f.util.parsePreserveAspectRatioAttribute(this.preserveAspectRatio || ""), o = this._element.width, i = this._element.height, e = 1, t = 1, n = 0, a = 0, r = 0, l = 0, u, d = this.width, g = this.height, m = { width: d, height: g };
+            return h && (h.alignX !== "none" || h.alignY !== "none") ? (h.meetOrSlice === "meet" && (e = t = f.util.findScaleToFit(this._element, m), u = (d - o * e) / 2, h.alignX === "Min" && (n = -u), h.alignX === "Max" && (n = u), u = (g - i * t) / 2, h.alignY === "Min" && (a = -u), h.alignY === "Max" && (a = u)), h.meetOrSlice === "slice" && (e = t = f.util.findScaleToCover(this._element, m), u = o - d / e, h.alignX === "Mid" && (r = u / 2), h.alignX === "Max" && (r = u), u = i - g / t, h.alignY === "Mid" && (l = u / 2), h.alignY === "Max" && (l = u), o = d / e, i = g / t)) : (e = d / o, t = g / i), {
               width: o,
               height: i,
               scaleX: e,
@@ -13244,9 +13244,9 @@ gl_FragColor = color;
            * @param {ImageData} options.imageData The Uint8Array to be filtered.
            */
           applyTo2d: function(i) {
-            var e = i.imageData, t = e.data, n = t.length, a = this.matrix, r, l, u, d, g, v = this.colorsOnly;
+            var e = i.imageData, t = e.data, n = t.length, a = this.matrix, r, l, u, d, g, m = this.colorsOnly;
             for (g = 0; g < n; g += 4)
-              r = t[g], l = t[g + 1], u = t[g + 2], v ? (t[g] = r * a[0] + l * a[1] + u * a[2] + a[4] * 255, t[g + 1] = r * a[5] + l * a[6] + u * a[7] + a[9] * 255, t[g + 2] = r * a[10] + l * a[11] + u * a[12] + a[14] * 255) : (d = t[g + 3], t[g] = r * a[0] + l * a[1] + u * a[2] + d * a[3] + a[4] * 255, t[g + 1] = r * a[5] + l * a[6] + u * a[7] + d * a[8] + a[9] * 255, t[g + 2] = r * a[10] + l * a[11] + u * a[12] + d * a[13] + a[14] * 255, t[g + 3] = r * a[15] + l * a[16] + u * a[17] + d * a[18] + a[19] * 255);
+              r = t[g], l = t[g + 1], u = t[g + 2], m ? (t[g] = r * a[0] + l * a[1] + u * a[2] + a[4] * 255, t[g + 1] = r * a[5] + l * a[6] + u * a[7] + a[9] * 255, t[g + 2] = r * a[10] + l * a[11] + u * a[12] + a[14] * 255) : (d = t[g + 3], t[g] = r * a[0] + l * a[1] + u * a[2] + d * a[3] + a[4] * 255, t[g + 1] = r * a[5] + l * a[6] + u * a[7] + d * a[8] + a[9] * 255, t[g + 2] = r * a[10] + l * a[11] + u * a[12] + d * a[13] + a[14] * 255, t[g + 3] = r * a[15] + l * a[16] + u * a[17] + d * a[18] + a[19] * 255);
           },
           /**
            * Return WebGL uniform locations for this filter's shader.
@@ -13547,13 +13547,13 @@ gl_FragColor.a = alpha;
            * @param {ImageData} options.imageData The Uint8ClampedArray to be filtered.
            */
           applyTo2d: function(e) {
-            var t = e.imageData, n = t.data, a = this.matrix, r = Math.round(Math.sqrt(a.length)), l = Math.floor(r / 2), u = t.width, d = t.height, g = e.ctx.createImageData(u, d), v = g.data, m = this.opaque ? 1 : 0, y, w, E, L, W, G, V, H, N, K, $, J, p;
+            var t = e.imageData, n = t.data, a = this.matrix, r = Math.round(Math.sqrt(a.length)), l = Math.floor(r / 2), u = t.width, d = t.height, g = e.ctx.createImageData(u, d), m = g.data, v = this.opaque ? 1 : 0, y, w, E, L, W, G, V, H, N, K, $, J, p;
             for ($ = 0; $ < d; $++)
               for (K = 0; K < u; K++) {
                 for (W = ($ * u + K) * 4, y = 0, w = 0, E = 0, L = 0, p = 0; p < r; p++)
                   for (J = 0; J < r; J++)
-                    V = $ + p - l, G = K + J - l, !(V < 0 || V >= d || G < 0 || G >= u) && (H = (V * u + G) * 4, N = a[p * r + J], y += n[H] * N, w += n[H + 1] * N, E += n[H + 2] * N, m || (L += n[H + 3] * N));
-                v[W] = y, v[W + 1] = w, v[W + 2] = E, m ? v[W + 3] = n[W + 3] : v[W + 3] = L;
+                    V = $ + p - l, G = K + J - l, !(V < 0 || V >= d || G < 0 || G >= u) && (H = (V * u + G) * 4, N = a[p * r + J], y += n[H] * N, w += n[H + 1] * N, E += n[H + 2] * N, v || (L += n[H + 3] * N));
+                m[W] = y, m[W + 1] = w, m[W + 2] = E, v ? m[W + 3] = n[W + 3] : m[W + 3] = L;
               }
             e.imageData = g;
           },
@@ -13895,12 +13895,12 @@ gl_FragColor = color;
            * @param {ImageData} options.imageData The Uint8ClampedArray to be filtered.
            */
           applyTo2d: function(i) {
-            var e = i.imageData, t = e.data, n = e.height, a = e.width, r, l, u, d, g, v, m, y, w, E, L;
+            var e = i.imageData, t = e.data, n = e.height, a = e.width, r, l, u, d, g, m, v, y, w, E, L;
             for (l = 0; l < n; l += this.blocksize)
               for (u = 0; u < a; u += this.blocksize)
-                for (r = l * 4 * a + u * 4, d = t[r], g = t[r + 1], v = t[r + 2], m = t[r + 3], E = Math.min(l + this.blocksize, n), L = Math.min(u + this.blocksize, a), y = l; y < E; y++)
+                for (r = l * 4 * a + u * 4, d = t[r], g = t[r + 1], m = t[r + 2], v = t[r + 3], E = Math.min(l + this.blocksize, n), L = Math.min(u + this.blocksize, a), y = l; y < E; y++)
                   for (w = u; w < L; w++)
-                    r = y * 4 * a + w * 4, t[r] = d, t[r + 1] = g, t[r + 2] = v, t[r + 3] = m;
+                    r = y * 4 * a + w * 4, t[r] = d, t[r + 1] = g, t[r + 2] = m, t[r + 3] = v;
           },
           /**
            * Indicate when the filter is not gonna apply changes to the image
@@ -13986,17 +13986,17 @@ gl_FragColor.a = 0.0;
            * @param {Object} canvasEl Canvas element to apply filter to
            */
           applyTo2d: function(e) {
-            var t = e.imageData, n = t.data, a, r = this.distance * 255, l, u, d, g = new s.Color(this.color).getSource(), v = [
+            var t = e.imageData, n = t.data, a, r = this.distance * 255, l, u, d, g = new s.Color(this.color).getSource(), m = [
               g[0] - r,
               g[1] - r,
               g[2] - r
-            ], m = [
+            ], v = [
               g[0] + r,
               g[1] + r,
               g[2] + r
             ];
             for (a = 0; a < n.length; a += 4)
-              l = n[a], u = n[a + 1], d = n[a + 2], l > v[0] && u > v[1] && d > v[2] && l < m[0] && u < m[1] && d < m[2] && (n[a + 3] = 0);
+              l = n[a], u = n[a + 1], d = n[a + 2], l > m[0] && u > m[1] && d > m[2] && l < v[0] && u < v[1] && d < v[2] && (n[a + 3] = 0);
           },
           /**
            * Return WebGL uniform locations for this filter's shader.
@@ -14331,8 +14331,8 @@ if (color.a > 0.0) {
            * @param {ImageData} options.imageData The Uint8ClampedArray to be filtered.
            */
           applyTo2d: function(i) {
-            var e = i.imageData, t = e.data, n = t.length, a, r, l, u, d, g, v, m = 1 - this.alpha;
-            v = new s.Color(this.color).getSource(), a = v[0] * this.alpha, r = v[1] * this.alpha, l = v[2] * this.alpha;
+            var e = i.imageData, t = e.data, n = t.length, a, r, l, u, d, g, m, v = 1 - this.alpha;
+            m = new s.Color(this.color).getSource(), a = m[0] * this.alpha, r = m[1] * this.alpha, l = m[2] * this.alpha;
             for (var y = 0; y < n; y += 4)
               switch (u = t[y], d = t[y + 1], g = t[y + 2], this.mode) {
                 case "multiply":
@@ -14364,7 +14364,7 @@ if (color.a > 0.0) {
                   t[y] = a + u - 2 * a * u / 255, t[y + 1] = r + d - 2 * r * d / 255, t[y + 2] = l + g - 2 * l * g / 255;
                   break;
                 case "tint":
-                  t[y] = a + u * m, t[y + 1] = r + d * m, t[y + 2] = l + g * m;
+                  t[y] = a + u * v, t[y + 1] = r + d * v, t[y + 2] = l + g * v;
               }
           },
           /**
@@ -14507,15 +14507,15 @@ gl_FragColor = color;
            * @param {ImageData} options.imageData The Uint8ClampedArray to be filtered.
            */
           applyTo2d: function(i) {
-            var e = i.imageData, t = i.filterBackend.resources, n = e.data, a = n.length, r = e.width, l = e.height, u, d, g, v, m, y, w, E, L, W, G = this.image, V;
+            var e = i.imageData, t = i.filterBackend.resources, n = e.data, a = n.length, r = e.width, l = e.height, u, d, g, m, v, y, w, E, L, W, G = this.image, V;
             t.blendImage || (t.blendImage = s.util.createCanvasElement()), L = t.blendImage, W = L.getContext("2d"), L.width !== r || L.height !== l ? (L.width = r, L.height = l) : W.clearRect(0, 0, r, l), W.setTransform(G.scaleX, 0, 0, G.scaleY, G.left, G.top), W.drawImage(G._element, 0, 0, r, l), V = W.getImageData(0, 0, r, l).data;
             for (var H = 0; H < a; H += 4)
-              switch (m = n[H], y = n[H + 1], w = n[H + 2], E = n[H + 3], u = V[H], d = V[H + 1], g = V[H + 2], v = V[H + 3], this.mode) {
+              switch (v = n[H], y = n[H + 1], w = n[H + 2], E = n[H + 3], u = V[H], d = V[H + 1], g = V[H + 2], m = V[H + 3], this.mode) {
                 case "multiply":
-                  n[H] = m * u / 255, n[H + 1] = y * d / 255, n[H + 2] = w * g / 255, n[H + 3] = E * v / 255;
+                  n[H] = v * u / 255, n[H + 1] = y * d / 255, n[H + 2] = w * g / 255, n[H + 3] = E * m / 255;
                   break;
                 case "mask":
-                  n[H + 3] = v;
+                  n[H + 3] = m;
                   break;
               }
           },
@@ -14628,8 +14628,8 @@ gl_FragColor = color;
           retrieveShader: function(u) {
             var d = this.getFilterWindow(), g = this.type + "_" + d;
             if (!u.programCache.hasOwnProperty(g)) {
-              var v = this.generateShader(d);
-              u.programCache[g] = this.createProgram(u.context, v);
+              var m = this.generateShader(d);
+              u.programCache[g] = this.createProgram(u.context, m);
             }
             return u.programCache[g];
           },
@@ -14638,18 +14638,18 @@ gl_FragColor = color;
             return Math.ceil(this.lanczosLobes / u);
           },
           getTaps: function() {
-            for (var u = this.lanczosCreate(this.lanczosLobes), d = this.tempScale, g = this.getFilterWindow(), v = new Array(g), m = 1; m <= g; m++)
-              v[m - 1] = u(m * d);
-            return v;
+            for (var u = this.lanczosCreate(this.lanczosLobes), d = this.tempScale, g = this.getFilterWindow(), m = new Array(g), v = 1; v <= g; v++)
+              m[v - 1] = u(v * d);
+            return m;
           },
           /**
            * Generate vertex and shader sources from the necessary steps numbers
            * @param {Number} filterWindow
            */
-          generateShader: function(v) {
-            for (var d = new Array(v), g = this.fragmentSourceTOP, v, m = 1; m <= v; m++)
-              d[m - 1] = m + ".0 * uDelta";
-            return g += "uniform float uTaps[" + v + `];
+          generateShader: function(m) {
+            for (var d = new Array(m), g = this.fragmentSourceTOP, m, v = 1; v <= m; v++)
+              d[v - 1] = v + ".0 * uDelta";
+            return g += "uniform float uTaps[" + m + `];
 `, g += `void main() {
 `, g += `  vec4 color = texture2D(uTexture, vTexCoord);
 `, g += `  float sum = 1.0;
@@ -14703,10 +14703,10 @@ varying vec2 vTexCoord;
            * @param {Number} scaleY
            */
           applyTo2d: function(u) {
-            var d = u.imageData, g = this.scaleX, v = this.scaleY;
-            this.rcpScaleX = 1 / g, this.rcpScaleY = 1 / v;
-            var m = d.width, y = d.height, w = t(m * g), E = t(y * v), L;
-            this.resizeType === "sliceHack" ? L = this.sliceByTwo(u, m, y, w, E) : this.resizeType === "hermite" ? L = this.hermiteFastResize(u, m, y, w, E) : this.resizeType === "bilinear" ? L = this.bilinearFiltering(u, m, y, w, E) : this.resizeType === "lanczos" && (L = this.lanczosResize(u, m, y, w, E)), u.imageData = L;
+            var d = u.imageData, g = this.scaleX, m = this.scaleY;
+            this.rcpScaleX = 1 / g, this.rcpScaleY = 1 / m;
+            var v = d.width, y = d.height, w = t(v * g), E = t(y * m), L;
+            this.resizeType === "sliceHack" ? L = this.sliceByTwo(u, v, y, w, E) : this.resizeType === "hermite" ? L = this.hermiteFastResize(u, v, y, w, E) : this.resizeType === "bilinear" ? L = this.bilinearFiltering(u, v, y, w, E) : this.resizeType === "lanczos" && (L = this.lanczosResize(u, v, y, w, E)), u.imageData = L;
           },
           /**
            * Filter sliceByTwo
@@ -14717,11 +14717,11 @@ varying vec2 vTexCoord;
            * @param {Number} dH Destination Height
            * @returns {ImageData}
            */
-          sliceByTwo: function(u, d, g, v, m) {
+          sliceByTwo: function(u, d, g, m, v) {
             var y = u.imageData, w = 0.5, E = !1, L = !1, W = d * w, G = g * w, V = s.filterBackend.resources, H, N, K = 0, $ = 0, J = d, p = 0;
-            for (V.sliceByTwo || (V.sliceByTwo = document.createElement("canvas")), H = V.sliceByTwo, (H.width < d * 1.5 || H.height < g) && (H.width = d * 1.5, H.height = g), N = H.getContext("2d"), N.clearRect(0, 0, d * 1.5, g), N.putImageData(y, 0, 0), v = o(v), m = o(m); !E || !L; )
-              d = W, g = G, v < o(W * w) ? W = o(W * w) : (W = v, E = !0), m < o(G * w) ? G = o(G * w) : (G = m, L = !0), N.drawImage(H, K, $, d, g, J, p, W, G), K = J, $ = p, p += G;
-            return N.getImageData(K, $, v, m);
+            for (V.sliceByTwo || (V.sliceByTwo = document.createElement("canvas")), H = V.sliceByTwo, (H.width < d * 1.5 || H.height < g) && (H.width = d * 1.5, H.height = g), N = H.getContext("2d"), N.clearRect(0, 0, d * 1.5, g), N.putImageData(y, 0, 0), m = o(m), v = o(v); !E || !L; )
+              d = W, g = G, m < o(W * w) ? W = o(W * w) : (W = m, E = !0), v < o(G * w) ? G = o(G * w) : (G = v, L = !0), N.drawImage(H, K, $, d, g, J, p, W, G), K = J, $ = p, p += G;
+            return N.getImageData(K, $, m, v);
           },
           /**
            * Filter lanczosResize
@@ -14732,21 +14732,21 @@ varying vec2 vTexCoord;
            * @param {Number} dH Destination Height
            * @returns {ImageData}
            */
-          lanczosResize: function(u, d, g, v, m) {
+          lanczosResize: function(u, d, g, m, v) {
             function y(b) {
               var S, k, C, _, T, P, F, D, B, Y, z;
-              for (p.x = (b + 0.5) * G, x.x = o(p.x), S = 0; S < m; S++) {
+              for (p.x = (b + 0.5) * G, x.x = o(p.x), S = 0; S < v; S++) {
                 for (p.y = (S + 0.5) * V, x.y = o(p.y), T = 0, P = 0, F = 0, D = 0, B = 0, k = x.x - K; k <= x.x + K; k++)
                   if (!(k < 0 || k >= d)) {
                     Y = o(1e3 * e(k - p.x)), J[Y] || (J[Y] = {});
                     for (var A = x.y - $; A <= x.y + $; A++)
                       A < 0 || A >= g || (z = o(1e3 * e(A - p.y)), J[Y][z] || (J[Y][z] = W(i(h(Y * H, 2) + h(z * N, 2)) / 1e3)), C = J[Y][z], C > 0 && (_ = (A * d + k) * 4, T += C, P += C * w[_], F += C * w[_ + 1], D += C * w[_ + 2], B += C * w[_ + 3]));
                   }
-                _ = (S * v + b) * 4, L[_] = P / T, L[_ + 1] = F / T, L[_ + 2] = D / T, L[_ + 3] = B / T;
+                _ = (S * m + b) * 4, L[_] = P / T, L[_ + 1] = F / T, L[_ + 2] = D / T, L[_ + 3] = B / T;
               }
-              return ++b < v ? y(b) : E;
+              return ++b < m ? y(b) : E;
             }
-            var w = u.imageData.data, E = u.ctx.createImageData(v, m), L = E.data, W = this.lanczosCreate(this.lanczosLobes), G = this.rcpScaleX, V = this.rcpScaleY, H = 2 / this.rcpScaleX, N = 2 / this.rcpScaleY, K = a(G * this.lanczosLobes / 2), $ = a(V * this.lanczosLobes / 2), J = {}, p = {}, x = {};
+            var w = u.imageData.data, E = u.ctx.createImageData(m, v), L = E.data, W = this.lanczosCreate(this.lanczosLobes), G = this.rcpScaleX, V = this.rcpScaleY, H = 2 / this.rcpScaleX, N = 2 / this.rcpScaleY, K = a(G * this.lanczosLobes / 2), $ = a(V * this.lanczosLobes / 2), J = {}, p = {}, x = {};
             return y(0);
           },
           /**
@@ -14758,10 +14758,10 @@ varying vec2 vTexCoord;
            * @param {Number} dH Destination Height
            * @returns {ImageData}
            */
-          bilinearFiltering: function(u, d, g, v, m) {
-            var y, w, E, L, W, G, V, H, N, K, $, J, p = 0, x, b = this.rcpScaleX, S = this.rcpScaleY, k = 4 * (d - 1), C = u.imageData, _ = C.data, T = u.ctx.createImageData(v, m), P = T.data;
-            for (V = 0; V < m; V++)
-              for (H = 0; H < v; H++)
+          bilinearFiltering: function(u, d, g, m, v) {
+            var y, w, E, L, W, G, V, H, N, K, $, J, p = 0, x, b = this.rcpScaleX, S = this.rcpScaleY, k = 4 * (d - 1), C = u.imageData, _ = C.data, T = u.ctx.createImageData(m, v), P = T.data;
+            for (V = 0; V < v; V++)
+              for (H = 0; H < m; H++)
                 for (W = o(b * H), G = o(S * V), N = b * H - W, K = S * V - G, x = 4 * (G * d + W), $ = 0; $ < 4; $++)
                   y = _[x + $], w = _[x + 4 + $], E = _[x + k + $], L = _[x + k + 4 + $], J = y * (1 - N) * (1 - K) + w * N * (1 - K) + E * K * (1 - N) + L * N * K, P[p++] = J;
             return T;
@@ -14775,10 +14775,10 @@ varying vec2 vTexCoord;
            * @param {Number} dH Destination Height
            * @returns {ImageData}
            */
-          hermiteFastResize: function(u, d, g, v, m) {
-            for (var y = this.rcpScaleX, w = this.rcpScaleY, E = a(y / 2), L = a(w / 2), W = u.imageData, G = W.data, V = u.ctx.createImageData(v, m), H = V.data, N = 0; N < m; N++)
-              for (var K = 0; K < v; K++) {
-                for (var $ = (K + N * v) * 4, J = 0, p = 0, x = 0, b = 0, S = 0, k = 0, C = 0, _ = (N + 0.5) * w, T = o(N * w); T < (N + 1) * w; T++)
+          hermiteFastResize: function(u, d, g, m, v) {
+            for (var y = this.rcpScaleX, w = this.rcpScaleY, E = a(y / 2), L = a(w / 2), W = u.imageData, G = W.data, V = u.ctx.createImageData(m, v), H = V.data, N = 0; N < v; N++)
+              for (var K = 0; K < m; K++) {
+                for (var $ = (K + N * m) * 4, J = 0, p = 0, x = 0, b = 0, S = 0, k = 0, C = 0, _ = (N + 0.5) * w, T = o(N * w); T < (N + 1) * w; T++)
                   for (var P = e(_ - (T + 0.5)) / L, F = (K + 0.5) * y, D = P * P, B = o(K * y); B < (K + 1) * y; B++) {
                     var Y = e(F - (B + 0.5)) / E, z = i(D + Y * Y);
                     z > 1 && z < -1 || (J = 2 * z * z * z - 3 * z * z + 1, J > 0 && (Y = 4 * (B + T * d), C += J * G[Y + 3], x += J, G[Y + 3] < 255 && (J = J * G[Y + 3] / 250), b += J * G[Y], S += J * G[Y + 1], k += J * G[Y + 2], p += J));
@@ -15091,11 +15091,11 @@ gl_FragColor = color / total;
           simpleBlur: function(i) {
             var e = i.filterBackend.resources, t, n, a = i.imageData.width, r = i.imageData.height;
             e.blurLayer1 || (e.blurLayer1 = s.util.createCanvasElement(), e.blurLayer2 = s.util.createCanvasElement()), t = e.blurLayer1, n = e.blurLayer2, (t.width !== a || t.height !== r) && (n.width = t.width = a, n.height = t.height = r);
-            var l = t.getContext("2d"), u = n.getContext("2d"), d = 15, g, v, m, y, w = this.blur * 0.06 * 0.5;
+            var l = t.getContext("2d"), u = n.getContext("2d"), d = 15, g, m, v, y, w = this.blur * 0.06 * 0.5;
             for (l.putImageData(i.imageData, 0, 0), u.clearRect(0, 0, a, r), y = -d; y <= d; y++)
-              g = (Math.random() - 0.5) / 4, v = y / d, m = w * v * a + g, u.globalAlpha = 1 - Math.abs(v), u.drawImage(t, m, g), l.drawImage(n, 0, 0), u.globalAlpha = 1, u.clearRect(0, 0, n.width, n.height);
+              g = (Math.random() - 0.5) / 4, m = y / d, v = w * m * a + g, u.globalAlpha = 1 - Math.abs(m), u.drawImage(t, v, g), l.drawImage(n, 0, 0), u.globalAlpha = 1, u.clearRect(0, 0, n.width, n.height);
             for (y = -d; y <= d; y++)
-              g = (Math.random() - 0.5) / 4, v = y / d, m = w * v * r + g, u.globalAlpha = 1 - Math.abs(v), u.drawImage(t, g, m), l.drawImage(n, 0, 0), u.globalAlpha = 1, u.clearRect(0, 0, n.width, n.height);
+              g = (Math.random() - 0.5) / 4, m = y / d, v = w * m * r + g, u.globalAlpha = 1 - Math.abs(m), u.drawImage(t, g, v), l.drawImage(n, 0, 0), u.globalAlpha = 1, u.clearRect(0, 0, n.width, n.height);
             i.ctx.drawImage(t, 0, 0);
             var E = i.ctx.getImageData(0, 0, t.width, t.height);
             return l.globalAlpha = 1, l.clearRect(0, 0, t.width, t.height), E;
@@ -15710,7 +15710,7 @@ gl_FragColor.rgb *= color.a;
             for (var i, e, t, n, a, r, l, u = 0, d = this._textLines.length; u < d; u++)
               if (!(this.textAlign !== "justify" && (u === d - 1 || this.isEndOfWrapping(u))) && (n = 0, a = this._textLines[u], e = this.getLineWidth(u), e < this.width && (l = this.textLines[u].match(this._reSpacesAndTabs)))) {
                 t = l.length, i = (this.width - e) / t;
-                for (var g = 0, v = a.length; g <= v; g++)
+                for (var g = 0, m = a.length; g <= m; g++)
                   r = this.__charBounds[u][g], this._reSpaceAndTab.test(a[g]) ? (r.width += i, r.kernedWidth += i, r.left += n, n += i) : r.left += n;
               }
           },
@@ -15825,25 +15825,25 @@ gl_FragColor.rgb *= color.a;
            */
           _renderTextLinesBackground: function(i) {
             if (!(!this.textBackgroundColor && !this.styleHas("textBackgroundColor"))) {
-              for (var e, t, n = i.fillStyle, a, r, l = this._getLeftOffset(), u = this._getTopOffset(), d = 0, g = 0, v, m, y = this.path, w, E = 0, L = this._textLines.length; E < L; E++) {
+              for (var e, t, n = i.fillStyle, a, r, l = this._getLeftOffset(), u = this._getTopOffset(), d = 0, g = 0, m, v, y = this.path, w, E = 0, L = this._textLines.length; E < L; E++) {
                 if (e = this.getHeightOfLine(E), !this.textBackgroundColor && !this.styleHas("textBackgroundColor", E)) {
                   u += e;
                   continue;
                 }
                 a = this._textLines[E], t = this._getLineLeftOffset(E), g = 0, d = 0, r = this.getValueOfPropertyAt(E, 0, "textBackgroundColor");
                 for (var W = 0, G = a.length; W < G; W++)
-                  v = this.__charBounds[E][W], m = this.getValueOfPropertyAt(E, W, "textBackgroundColor"), y ? (i.save(), i.translate(v.renderLeft, v.renderTop), i.rotate(v.angle), i.fillStyle = m, m && i.fillRect(
-                    -v.width / 2,
+                  m = this.__charBounds[E][W], v = this.getValueOfPropertyAt(E, W, "textBackgroundColor"), y ? (i.save(), i.translate(m.renderLeft, m.renderTop), i.rotate(m.angle), i.fillStyle = v, v && i.fillRect(
+                    -m.width / 2,
                     -e / this.lineHeight * (1 - this._fontSizeFraction),
-                    v.width,
+                    m.width,
                     e / this.lineHeight
-                  ), i.restore()) : m !== r ? (w = l + t + d, this.direction === "rtl" && (w = this.width - w - g), i.fillStyle = r, r && i.fillRect(
+                  ), i.restore()) : v !== r ? (w = l + t + d, this.direction === "rtl" && (w = this.width - w - g), i.fillStyle = r, r && i.fillRect(
                     w,
                     u,
                     g,
                     e / this.lineHeight
-                  ), d = v.left, g = v.width, r = m) : g += v.kernedWidth;
-                m && !y && (w = l + t + d, this.direction === "rtl" && (w = this.width - w - g), i.fillStyle = m, i.fillRect(
+                  ), d = m.left, g = m.width, r = v) : g += m.kernedWidth;
+                v && !y && (w = l + t + d, this.direction === "rtl" && (w = this.width - w - g), i.fillStyle = v, i.fillRect(
                   w,
                   u,
                   g,
@@ -15878,12 +15878,12 @@ gl_FragColor.rgb *= color.a;
            * @param {Object} [prevCharStyle] style of previous char
            */
           _measureChar: function(i, e, t, n) {
-            var a = this.getFontCache(e), r = this._getFontDeclaration(e), l = this._getFontDeclaration(n), u = t + i, d = r === l, g, v, m, y = e.fontSize / this.CACHE_FONT_SIZE, w;
-            if (t && a[t] !== void 0 && (m = a[t]), a[i] !== void 0 && (w = g = a[i]), d && a[u] !== void 0 && (v = a[u], w = v - m), g === void 0 || m === void 0 || v === void 0) {
+            var a = this.getFontCache(e), r = this._getFontDeclaration(e), l = this._getFontDeclaration(n), u = t + i, d = r === l, g, m, v, y = e.fontSize / this.CACHE_FONT_SIZE, w;
+            if (t && a[t] !== void 0 && (v = a[t]), a[i] !== void 0 && (w = g = a[i]), d && a[u] !== void 0 && (m = a[u], w = m - v), g === void 0 || v === void 0 || m === void 0) {
               var E = this.getMeasuringContext();
               this._setTextStyles(E, e, !0);
             }
-            return g === void 0 && (w = g = E.measureText(i).width, a[i] = g), m === void 0 && d && t && (m = E.measureText(t).width, a[t] = m), d && v === void 0 && (v = E.measureText(u).width, a[u] = v, w = v - m), { width: g * y, kernedWidth: w * y };
+            return g === void 0 && (w = g = E.measureText(i).width, a[i] = g), v === void 0 && d && t && (v = E.measureText(t).width, a[t] = v), d && m === void 0 && (m = E.measureText(u).width, a[u] = m, w = m - v), { width: g * y, kernedWidth: w * y };
           },
           /**
            * Computes height of character at given position
@@ -15910,7 +15910,7 @@ gl_FragColor.rgb *= color.a;
            * @return {Object} object.widthOfSpaces length of chars that match this._reSpacesAndTabs
            */
           _measureLine: function(i) {
-            var e = 0, t, n, a = this._textLines[i], r, l, u = 0, d = new Array(a.length), g = 0, v, m, y = this.path, w = this.pathSide === "right";
+            var e = 0, t, n, a = this._textLines[i], r, l, u = 0, d = new Array(a.length), g = 0, m, v, y = this.path, w = this.pathSide === "right";
             for (this.__charBounds[i] = d, t = 0; t < a.length; t++)
               n = a[t], l = this._getGraphemeBox(n, i, t, r), d[t] = l, e += l.kernedWidth, r = n;
             if (d[t] = {
@@ -15919,19 +15919,19 @@ gl_FragColor.rgb *= color.a;
               kernedWidth: 0,
               height: this.fontSize
             }, y) {
-              switch (m = y.segmentsInfo[y.segmentsInfo.length - 1].length, v = s.util.getPointOnPath(y.path, 0, y.segmentsInfo), v.x += y.pathOffset.x, v.y += y.pathOffset.y, this.textAlign) {
+              switch (v = y.segmentsInfo[y.segmentsInfo.length - 1].length, m = s.util.getPointOnPath(y.path, 0, y.segmentsInfo), m.x += y.pathOffset.x, m.y += y.pathOffset.y, this.textAlign) {
                 case "left":
-                  g = w ? m - e : 0;
+                  g = w ? v - e : 0;
                   break;
                 case "center":
-                  g = (m - e) / 2;
+                  g = (v - e) / 2;
                   break;
                 case "right":
-                  g = w ? 0 : m - e;
+                  g = w ? 0 : v - e;
                   break;
               }
               for (g += this.pathStartOffset * (w ? -1 : 1), t = w ? a.length - 1 : 0; w ? t >= 0 : t < a.length; w ? t-- : t++)
-                l = d[t], g > m ? g %= m : g < 0 && (g += m), this._setGraphemeOnPath(g, l, v), g += l.kernedWidth;
+                l = d[t], g > v ? g %= v : g < 0 && (g += v), this._setGraphemeOnPath(g, l, m), g += l.kernedWidth;
             }
             return { width: e, numOfSpaces: u };
           },
@@ -15957,9 +15957,9 @@ gl_FragColor.rgb *= color.a;
            * @param {String} [prevGrapheme] character preceding the one to be measured
            */
           _getGraphemeBox: function(i, e, t, n, a) {
-            var r = this.getCompleteStyleDeclaration(e, t), l = n ? this.getCompleteStyleDeclaration(e, t - 1) : {}, u = this._measureChar(i, r, n, l), d = u.kernedWidth, g = u.width, v;
-            this.charSpacing !== 0 && (v = this._getWidthOfCharSpacing(), g += v, d += v);
-            var m = {
+            var r = this.getCompleteStyleDeclaration(e, t), l = n ? this.getCompleteStyleDeclaration(e, t - 1) : {}, u = this._measureChar(i, r, n, l), d = u.kernedWidth, g = u.width, m;
+            this.charSpacing !== 0 && (m = this._getWidthOfCharSpacing(), g += m, d += m);
+            var v = {
               width: g,
               left: 0,
               height: r.fontSize,
@@ -15968,9 +15968,9 @@ gl_FragColor.rgb *= color.a;
             };
             if (t > 0 && !a) {
               var y = this.__charBounds[e][t - 1];
-              m.left = y.left + y.width + u.kernedWidth - u.width;
+              v.left = y.left + y.width + u.kernedWidth - u.width;
             }
-            return m;
+            return v;
           },
           /**
            * Calculate height of line at 'lineIndex'
@@ -16050,13 +16050,13 @@ gl_FragColor.rgb *= color.a;
            * @param {Number} lineIndex
            */
           _renderChars: function(i, e, t, n, a, r) {
-            var l = this.getHeightOfLine(r), u = this.textAlign.indexOf("justify") !== -1, d, g, v = "", m, y = 0, w, E = this.path, L = !u && this.charSpacing === 0 && this.isEmptyStyles(r) && !E, W = this.direction === "ltr", G = this.direction === "ltr" ? 1 : -1, V, H = e.canvas.getAttribute("dir");
+            var l = this.getHeightOfLine(r), u = this.textAlign.indexOf("justify") !== -1, d, g, m = "", v, y = 0, w, E = this.path, L = !u && this.charSpacing === 0 && this.isEmptyStyles(r) && !E, W = this.direction === "ltr", G = this.direction === "ltr" ? 1 : -1, V, H = e.canvas.getAttribute("dir");
             if (e.save(), H !== this.direction && (e.canvas.setAttribute("dir", W ? "ltr" : "rtl"), e.direction = W ? "ltr" : "rtl", e.textAlign = W ? "left" : "right"), a -= l * this._fontSizeFraction / this.lineHeight, L) {
               this._renderChar(i, e, r, 0, t.join(""), n, a, l), e.restore();
               return;
             }
             for (var N = 0, K = t.length - 1; N <= K; N++)
-              w = N === K || this.charSpacing || E, v += t[N], m = this.__charBounds[r][N], y === 0 ? (n += G * (m.kernedWidth - m.width), y += m.width) : y += m.kernedWidth, u && !w && this._reSpaceAndTab.test(t[N]) && (w = !0), w || (d = d || this.getCompleteStyleDeclaration(r, N), g = this.getCompleteStyleDeclaration(r, N + 1), w = s.util.hasStyleChanged(d, g, !1)), w && (E ? (e.save(), e.translate(m.renderLeft, m.renderTop), e.rotate(m.angle), this._renderChar(i, e, r, N, v, -y / 2, 0, l), e.restore()) : (V = n, this._renderChar(i, e, r, N, v, V, a, l)), v = "", d = g, n += G * y, y = 0);
+              w = N === K || this.charSpacing || E, m += t[N], v = this.__charBounds[r][N], y === 0 ? (n += G * (v.kernedWidth - v.width), y += v.width) : y += v.kernedWidth, u && !w && this._reSpaceAndTab.test(t[N]) && (w = !0), w || (d = d || this.getCompleteStyleDeclaration(r, N), g = this.getCompleteStyleDeclaration(r, N + 1), w = s.util.hasStyleChanged(d, g, !1)), w && (E ? (e.save(), e.translate(v.renderLeft, v.renderTop), e.rotate(v.angle), this._renderChar(i, e, r, N, m, -y / 2, 0, l), e.restore()) : (V = n, this._renderChar(i, e, r, N, m, V, a, l)), m = "", d = g, n += G * y, y = 0);
             e.restore();
           },
           /**
@@ -16096,8 +16096,8 @@ gl_FragColor.rgb *= color.a;
            * @param {Number} lineHeight Height of the line
            */
           _renderChar: function(i, e, t, n, a, r, l) {
-            var u = this._getStyleDeclaration(t, n), d = this.getCompleteStyleDeclaration(t, n), g = i === "fillText" && d.fill, v = i === "strokeText" && d.stroke && d.strokeWidth, m, y;
-            !v && !g || (e.save(), g && (m = this._setFillStyles(e, d)), v && (y = this._setStrokeStyles(e, d)), e.font = this._getFontDeclaration(d), u && u.textBackgroundColor && this._removeShadow(e), u && u.deltaY && (l += u.deltaY), g && e.fillText(a, r - m.offsetX, l - m.offsetY), v && e.strokeText(a, r - y.offsetX, l - y.offsetY), e.restore());
+            var u = this._getStyleDeclaration(t, n), d = this.getCompleteStyleDeclaration(t, n), g = i === "fillText" && d.fill, m = i === "strokeText" && d.stroke && d.strokeWidth, v, y;
+            !m && !g || (e.save(), g && (v = this._setFillStyles(e, d)), m && (y = this._setStrokeStyles(e, d)), e.font = this._getFontDeclaration(d), u && u.textBackgroundColor && this._removeShadow(e), u && u.deltaY && (l += u.deltaY), g && e.fillText(a, r - v.offsetX, l - v.offsetY), m && e.strokeText(a, r - y.offsetX, l - y.offsetY), e.restore());
           },
           /**
            * Turns the character into a 'superior figure' (i.e. 'superscript')
@@ -16188,12 +16188,12 @@ gl_FragColor.rgb *= color.a;
           _renderTextDecoration: function(i, e) {
             if (!(!this[e] && !this.styleHas(e))) {
               i.save(), (e === "overline" || e === "linethrough") && this._removeShadow(i);
-              for (var t, n, a, r, l, u, d, g, v = this._getLeftOffset(), m = this._getTopOffset(), y, w, E, L, W, G, V, H, N = this.path, K = this._getWidthOfCharSpacing(), $ = this.offsets[e], J = 0, p = this._textLines.length; J < p; J++) {
+              for (var t, n, a, r, l, u, d, g, m = this._getLeftOffset(), v = this._getTopOffset(), y, w, E, L, W, G, V, H, N = this.path, K = this._getWidthOfCharSpacing(), $ = this.offsets[e], J = 0, p = this._textLines.length; J < p; J++) {
                 if (t = this.getHeightOfLine(J), !this[e] && !this.styleHas(e, J)) {
-                  m += t;
+                  v += t;
                   continue;
                 }
-                d = this._textLines[J], G = t / this.lineHeight, r = this._getLineLeftOffset(J), w = 0, E = 0, g = this.getValueOfPropertyAt(J, 0, e), H = this.getValueOfPropertyAt(J, 0, "fill"), y = m + G * (1 - this._fontSizeFraction), n = this.getHeightOfChar(J, 0), l = this.getValueOfPropertyAt(J, 0, "deltaY");
+                d = this._textLines[J], G = t / this.lineHeight, r = this._getLineLeftOffset(J), w = 0, E = 0, g = this.getValueOfPropertyAt(J, 0, e), H = this.getValueOfPropertyAt(J, 0, "fill"), y = v + G * (1 - this._fontSizeFraction), n = this.getHeightOfChar(J, 0), l = this.getValueOfPropertyAt(J, 0, "deltaY");
                 for (var x = 0, b = d.length; x < b; x++)
                   if (L = this.__charBounds[J][x], W = this.getValueOfPropertyAt(J, x, e), V = this.getValueOfPropertyAt(J, x, "fill"), a = this.getHeightOfChar(J, x), u = this.getValueOfPropertyAt(J, x, "deltaY"), N && W && V)
                     i.save(), i.fillStyle = H, i.translate(L.renderLeft, L.renderTop), i.rotate(L.angle), i.fillRect(
@@ -16203,7 +16203,7 @@ gl_FragColor.rgb *= color.a;
                       this.fontSize / 15
                     ), i.restore();
                   else if ((W !== g || V !== H || a !== n || u !== l) && E > 0) {
-                    var S = v + r + w;
+                    var S = m + r + w;
                     this.direction === "rtl" && (S = this.width - S - E), g && H && (i.fillStyle = H, i.fillRect(
                       S,
                       y + $ * n + l,
@@ -16212,13 +16212,13 @@ gl_FragColor.rgb *= color.a;
                     )), w = L.left, E = L.width, g = W, H = V, n = a, l = u;
                   } else
                     E += L.kernedWidth;
-                var S = v + r + w;
+                var S = m + r + w;
                 this.direction === "rtl" && (S = this.width - S - E), i.fillStyle = V, W && V && i.fillRect(
                   S,
                   y + $ * n + l,
                   E - K,
                   this.fontSize / 15
-                ), m += t;
+                ), v += t;
               }
               i.restore();
             }
@@ -16306,7 +16306,7 @@ gl_FragColor.rgb *= color.a;
         "textContent" in i ? l = i.textContent : "firstChild" in i && i.firstChild !== null && "data" in i.firstChild && i.firstChild.data !== null && (l = i.firstChild.data), l = l.replace(/^\s+|\s+$|\n+/g, "").replace(/\s+/g, " ");
         var u = t.strokeWidth;
         t.strokeWidth = 0;
-        var d = new s.Text(l, t), g = d.getScaledHeight() / d.height, v = (d.height + d.strokeWidth) * d.lineHeight - d.height, m = v * g, y = d.getScaledHeight() + m, w = 0;
+        var d = new s.Text(l, t), g = d.getScaledHeight() / d.height, m = (d.height + d.strokeWidth) * d.lineHeight - d.height, v = m * g, y = d.getScaledHeight() + v, w = 0;
         a === "center" && (w = d.getScaledWidth() / 2), a === "right" && (w = d.getScaledWidth()), d.set({
           left: d.left - w,
           top: d.top - (y - d.fontSize * (0.07 + d._fontSizeFraction)) / d.lineHeight,
@@ -16789,7 +16789,7 @@ gl_FragColor.rgb *= color.a;
            */
           renderSelection: function(s, h) {
             for (var o = this.inCompositionMode ? this.hiddenTextarea.selectionStart : this.selectionStart, i = this.inCompositionMode ? this.hiddenTextarea.selectionEnd : this.selectionEnd, e = this.textAlign.indexOf("justify") !== -1, t = this.get2DCursorLocation(o), n = this.get2DCursorLocation(i), a = t.lineIndex, r = n.lineIndex, l = t.charIndex < 0 ? 0 : t.charIndex, u = n.charIndex < 0 ? 0 : n.charIndex, d = a; d <= r; d++) {
-              var g = this._getLineLeftOffset(d) || 0, v = this.getHeightOfLine(d), m = 0, y = 0, w = 0;
+              var g = this._getLineLeftOffset(d) || 0, m = this.getHeightOfLine(d), v = 0, y = 0, w = 0;
               if (d === a && (y = this.__charBounds[a][l].left), d >= a && d < r)
                 w = e && !this.isEndOfWrapping(d) ? this.width : this.getLineWidth(d) || 5;
               else if (d === r)
@@ -16799,14 +16799,14 @@ gl_FragColor.rgb *= color.a;
                   var E = this._getWidthOfCharSpacing();
                   w = this.__charBounds[r][u - 1].left + this.__charBounds[r][u - 1].width - E;
                 }
-              m = v, (this.lineHeight < 1 || d === r && this.lineHeight > 1) && (v /= this.lineHeight);
-              var L = s.left + g + y, W = w - y, G = v, V = 0;
-              this.inCompositionMode ? (h.fillStyle = this.compositionColor || "black", G = 1, V = v) : h.fillStyle = this.selectionColor, this.direction === "rtl" && (L = this.width - L - W), h.fillRect(
+              v = m, (this.lineHeight < 1 || d === r && this.lineHeight > 1) && (m /= this.lineHeight);
+              var L = s.left + g + y, W = w - y, G = m, V = 0;
+              this.inCompositionMode ? (h.fillStyle = this.compositionColor || "black", G = 1, V = m) : h.fillStyle = this.selectionColor, this.direction === "rtl" && (L = this.width - L - W), h.fillRect(
                 L,
                 s.top + s.topOffset + V,
                 W,
                 G
-              ), s.topOffset += m;
+              ), s.topOffset += v;
             }
           },
           /**
@@ -17152,8 +17152,8 @@ gl_FragColor.rgb *= color.a;
             var s = this.inCompositionMode ? this.compositionStart : this.selectionStart, h = this._getCursorBoundaries(s), o = this.get2DCursorLocation(s), i = o.lineIndex, e = o.charIndex, t = this.getValueOfPropertyAt(i, e, "fontSize") * this.lineHeight, n = h.leftOffset, a = this.calcTransformMatrix(), r = {
               x: h.left + n,
               y: h.top + h.topOffset + t
-            }, l = this.canvas.getRetinaScaling(), u = this.canvas.upperCanvasEl, d = u.width / l, g = u.height / l, v = d - t, m = g - t, y = u.clientWidth / d, w = u.clientHeight / g;
-            return r = f.util.transformPoint(r, a), r = f.util.transformPoint(r, this.canvas.viewportTransform), r.x *= y, r.y *= w, r.x < 0 && (r.x = 0), r.x > v && (r.x = v), r.y < 0 && (r.y = 0), r.y > m && (r.y = m), r.x += this.canvas._offset.left, r.y += this.canvas._offset.top, { left: r.x + "px", top: r.y + "px", fontSize: t + "px", charHeight: t };
+            }, l = this.canvas.getRetinaScaling(), u = this.canvas.upperCanvasEl, d = u.width / l, g = u.height / l, m = d - t, v = g - t, y = u.clientWidth / d, w = u.clientHeight / g;
+            return r = f.util.transformPoint(r, a), r = f.util.transformPoint(r, this.canvas.viewportTransform), r.x *= y, r.y *= w, r.x < 0 && (r.x = 0), r.x > m && (r.x = m), r.y < 0 && (r.y = 0), r.y > v && (r.y = v), r.x += this.canvas._offset.left, r.y += this.canvas._offset.top, { left: r.x + "px", top: r.y + "px", fontSize: t + "px", charHeight: t };
           },
           /**
            * @private
@@ -17548,14 +17548,14 @@ gl_FragColor.rgb *= color.a;
               this.styles = {}, this.updateFromTextArea(), this.fire("changed"), this.canvas && (this.canvas.fire("text:changed", { target: this }), this.canvas.requestRenderAll());
               return;
             }
-            var v = this.fromStringToGraphemeSelection(
+            var m = this.fromStringToGraphemeSelection(
               this.hiddenTextarea.selectionStart,
               this.hiddenTextarea.selectionEnd,
               this.hiddenTextarea.value
-            ), m = a > v.selectionStart;
-            l ? (e = this._text.slice(a, r), n += r - a) : i < o && (m ? e = this._text.slice(r + n, r) : e = this._text.slice(a, a - n)), t = h.slice(v.selectionEnd - n, v.selectionEnd), e && e.length && (t.length && (u = this.getSelectionStyles(a, a + 1, !1), u = t.map(function() {
+            ), v = a > m.selectionStart;
+            l ? (e = this._text.slice(a, r), n += r - a) : i < o && (v ? e = this._text.slice(r + n, r) : e = this._text.slice(a, a - n)), t = h.slice(m.selectionEnd - n, m.selectionEnd), e && e.length && (t.length && (u = this.getSelectionStyles(a, a + 1, !1), u = t.map(function() {
               return u[0];
-            })), l ? (d = a, g = r) : m ? (d = r - e.length, g = r) : (d = r, g = r + e.length), this.removeStyleFromTo(d, g)), t.length && (s && t.join("") === f.copiedText && !f.disableStyleCopyPaste && (u = f.copiedTextStyle), this.insertNewStyleBlock(t, a, u)), this.updateFromTextArea(), this.fire("changed"), this.canvas && (this.canvas.fire("text:changed", { target: this }), this.canvas.requestRenderAll());
+            })), l ? (d = a, g = r) : v ? (d = r - e.length, g = r) : (d = r, g = r + e.length), this.removeStyleFromTo(d, g)), t.length && (s && t.join("") === f.copiedText && !f.disableStyleCopyPaste && (u = f.copiedTextStyle), this.insertNewStyleBlock(t, a, u)), this.updateFromTextArea(), this.fire("changed"), this.canvas && (this.canvas.fire("text:changed", { target: this }), this.canvas.requestRenderAll());
           }
         },
         /**
@@ -17893,8 +17893,8 @@ gl_FragColor.rgb *= color.a;
            * @private
            */
           _createTextCharSpan: function(e, t, n, a, r) {
-            var l = e !== e.trim() || e.match(i), u = this.getSvgSpanStyles(t, l), d = u ? 'style="' + u + '"' : "", g = t.deltaY, v = "", m = f.Object.NUM_FRACTION_DIGITS, y = "";
-            if (g && (v = ' dy="' + c(g, m) + '" '), r.renderLeft !== void 0) {
+            var l = e !== e.trim() || e.match(i), u = this.getSvgSpanStyles(t, l), d = u ? 'style="' + u + '"' : "", g = t.deltaY, m = "", v = f.Object.NUM_FRACTION_DIGITS, y = "";
+            if (g && (m = ' dy="' + c(g, v) + '" '), r.renderLeft !== void 0) {
               var w = r.angle;
               y = ' rotate="' + c(s(w), f.Object.NUM_FRACTION_DIGITS) + '" ';
               var E = r.width / 2, L = h({ angle: s(w) });
@@ -17904,11 +17904,11 @@ gl_FragColor.rgb *= color.a;
             }
             return [
               '<tspan x="',
-              c(n, m),
+              c(n, v),
               '" y="',
-              c(a, m),
+              c(a, v),
               '" ',
-              v,
+              m,
               d,
               y,
               ">",
@@ -17917,10 +17917,10 @@ gl_FragColor.rgb *= color.a;
             ].join("");
           },
           _setSVGTextLineText: function(e, t, n, a) {
-            var r = this.getHeightOfLine(t), l = this.textAlign.indexOf("justify") !== -1, u, d, g = "", v, m, y = 0, w = this._textLines[t], E;
+            var r = this.getHeightOfLine(t), l = this.textAlign.indexOf("justify") !== -1, u, d, g = "", m, v, y = 0, w = this._textLines[t], E;
             a += r * (1 - this._fontSizeFraction) / this.lineHeight;
             for (var L = 0, W = w.length - 1; L <= W; L++)
-              E = L === W || this.charSpacing || this.path, g += w[L], v = this.__charBounds[t][L], y === 0 ? (n += v.kernedWidth - v.width, y += v.width) : y += v.kernedWidth, l && !E && this._reSpaceAndTab.test(w[L]) && (E = !0), E || (u = u || this.getCompleteStyleDeclaration(t, L), d = this.getCompleteStyleDeclaration(t, L + 1), E = f.util.hasStyleChanged(u, d, !0)), E && (m = this._getStyleDeclaration(t, L) || {}, e.push(this._createTextCharSpan(g, m, n, a, v)), g = "", u = d, n += y, y = 0);
+              E = L === W || this.charSpacing || this.path, g += w[L], m = this.__charBounds[t][L], y === 0 ? (n += m.kernedWidth - m.width, y += m.width) : y += m.kernedWidth, l && !E && this._reSpaceAndTab.test(w[L]) && (E = !0), E || (u = u || this.getCompleteStyleDeclaration(t, L), d = this.getCompleteStyleDeclaration(t, L + 1), E = f.util.hasStyleChanged(u, d, !0)), E && (v = this._getStyleDeclaration(t, L) || {}, e.push(this._createTextCharSpan(g, v, n, a, m)), g = "", u = d, n += y, y = 0);
           },
           _pushTextBgRect: function(e, t, n, a, r, l) {
             var u = f.Object.NUM_FRACTION_DIGITS;
@@ -17940,18 +17940,18 @@ gl_FragColor.rgb *= color.a;
             );
           },
           _setSVGTextLineBg: function(e, t, n, a) {
-            for (var r = this._textLines[t], l = this.getHeightOfLine(t) / this.lineHeight, u = 0, d = 0, g, v, m = this.getValueOfPropertyAt(t, 0, "textBackgroundColor"), y = 0, w = r.length; y < w; y++)
-              g = this.__charBounds[t][y], v = this.getValueOfPropertyAt(t, y, "textBackgroundColor"), v !== m ? (m && this._pushTextBgRect(
+            for (var r = this._textLines[t], l = this.getHeightOfLine(t) / this.lineHeight, u = 0, d = 0, g, m, v = this.getValueOfPropertyAt(t, 0, "textBackgroundColor"), y = 0, w = r.length; y < w; y++)
+              g = this.__charBounds[t][y], m = this.getValueOfPropertyAt(t, y, "textBackgroundColor"), m !== v ? (v && this._pushTextBgRect(
                 e,
-                m,
+                v,
                 n + d,
                 a,
                 u,
                 l
-              ), d = g.left, u = g.width, m = v) : u += g.kernedWidth;
-            v && this._pushTextBgRect(
+              ), d = g.left, u = g.width, v = m) : u += g.kernedWidth;
+            m && this._pushTextBgRect(
               e,
-              v,
+              m,
               n + d,
               a,
               u,
@@ -18197,10 +18197,10 @@ gl_FragColor.rgb *= color.a;
          * to.
          */
         _wrapLine: function(h, o, i, L) {
-          var t = 0, n = this.splitByGrapheme, a = [], r = [], l = n ? s.util.string.graphemeSplit(h) : h.split(this._wordJoiners), u = "", d = 0, g = n ? "" : " ", v = 0, m = 0, y = 0, w = !0, E = this._getWidthOfCharSpacing(), L = L || 0;
+          var t = 0, n = this.splitByGrapheme, a = [], r = [], l = n ? s.util.string.graphemeSplit(h) : h.split(this._wordJoiners), u = "", d = 0, g = n ? "" : " ", m = 0, v = 0, y = 0, w = !0, E = this._getWidthOfCharSpacing(), L = L || 0;
           l.length === 0 && l.push([]), i -= L;
           for (var W = 0; W < l.length; W++)
-            u = n ? l[W] : s.util.string.graphemeSplit(l[W]), v = this._measureWord(u, o, d), d += u.length, t += m + v - E, t > i && !w ? (a.push(r), r = [], t = v, w = !0) : t += E, !w && !n && r.push(g), r = r.concat(u), m = n ? 0 : this._measureWord([g], o, d), d++, w = !1, v > y && (y = v);
+            u = n ? l[W] : s.util.string.graphemeSplit(l[W]), m = this._measureWord(u, o, d), d += u.length, t += v + m - E, t > i && !w ? (a.push(r), r = [], t = m, w = !0) : t += E, !w && !n && r.push(g), r = r.concat(u), v = n ? 0 : this._measureWord([g], o, d), d++, w = !1, m > y && (y = m);
           return W && a.push(r), y + L > this.dynamicMinWidth && (this.dynamicMinWidth = y - E + L), a;
         },
         /**
@@ -18336,11 +18336,11 @@ gl_FragColor.rgb *= color.a;
 }
 var _t = zt();
 function Et(q) {
-  const f = window.innerWidth, at = document.documentElement.scrollHeight;
+  const f = document.documentElement.scrollWidth, at = document.documentElement.scrollHeight;
   q.setWidth(f), q.setHeight(at), q.renderAll();
 }
 function Ut() {
-  const q = mt(null), f = mt(null), at = mt("draw"), ot = mt([]), nt = mt(null), [ut, dt] = Ct("draw");
+  const q = vt(null), f = vt(null), at = vt("draw"), ot = vt([]), nt = vt(null), [ut, dt] = Ct("draw");
   At(() => {
     const e = new _t.fabric.Canvas(q.current, {
       isDrawingMode: !0,
@@ -18385,19 +18385,19 @@ function Ut() {
             if (!nt.current || at.current !== "arrow") return;
             const a = t.getPointer(n.e), { start: r, obj: l, arrowHead: u } = nt.current;
             l.set({ x2: a.x, y2: a.y }), u && t.remove(u);
-            const d = a.x - r.x, g = a.y - r.y, v = Math.atan2(g, d) * 180 / Math.PI, m = new _t.fabric.Triangle({
+            const d = a.x - r.x, g = a.y - r.y, m = Math.atan2(g, d) * 180 / Math.PI, v = new _t.fabric.Triangle({
               left: a.x,
               top: a.y,
               width: 12,
               height: 14,
               fill: "#FF2020",
-              angle: v + 90,
+              angle: m + 90,
               originX: "center",
               originY: "center",
               selectable: !1,
               evented: !1
             });
-            t.add(m), nt.current.arrowHead = m, t.renderAll();
+            t.add(v), nt.current.arrowHead = v, t.renderAll();
           }), t.on("mouse:up", () => {
             at.current === "arrow" && (nt.current && (nt.current.obj.set({ selectable: !0, evented: !0 }), nt.current.arrowHead && nt.current.arrowHead.set({ selectable: !0, evented: !0 }), nt.current = null), ot.current.push(t.toJSON()));
           });
@@ -18497,21 +18497,23 @@ function Ut() {
     try {
       const { toCanvas: n } = await import("./index-xEu3GZzD.mjs"), a = await n(document.body, {
         useCORS: !0,
-        pixelRatio: window.devicePixelRatio || 1
+        pixelRatio: window.devicePixelRatio || 1,
+        width: document.documentElement.scrollWidth,
+        height: document.documentElement.scrollHeight
       }), r = t.toDataURL({
         format: "png",
         multiplier: window.devicePixelRatio || 1
       }), l = document.createElement("canvas");
       l.width = a.width, l.height = a.height;
       const u = l.getContext("2d");
-      u.drawImage(a, 0, 0), await new Promise((m) => {
+      u.drawImage(a, 0, 0), await new Promise((v) => {
         const y = new Image();
         y.onload = () => {
-          u.drawImage(y, 0, 0, l.width, l.height), m();
+          u.drawImage(y, 0, 0, l.width, l.height), v();
         }, y.src = r;
       });
-      const d = document.createElement("a"), v = (/* @__PURE__ */ new Date()).toISOString().slice(0, 16).replace("T", "-").replace(":", "");
-      return d.download = `feedback-${v}.png`, d.href = l.toDataURL("image/png"), d.click(), { success: !0 };
+      const d = document.createElement("a"), m = (/* @__PURE__ */ new Date()).toISOString().slice(0, 16).replace("T", "-").replace(":", "");
+      return d.download = `feedback-${m}.png`, d.href = l.toDataURL("image/png"), d.click(), { success: !0 };
     } catch (n) {
       return console.error("[feedback-overlay] saveImage error:", n), { success: !1 };
     } finally {
@@ -18531,13 +18533,13 @@ function Ut() {
 const kt = "#1C1C22", Nt = "#2B4FC7", Gt = "#B54A2A", Dt = "#EEEAE3";
 function Kt({ enabled: q }) {
   if (!q) return null;
-  const [f, at] = Ct(!1), [ot, nt] = Ct(!1), [ut, dt] = Ct(""), c = mt(null), s = mt(null), h = mt(null), { canvasElRef: o, activeTool: i, setTool: e, undo: t, clearAll: n, saveImage: a } = Ut();
+  const [f, at] = Ct(!1), [ot, nt] = Ct(!1), [ut, dt] = Ct(""), c = vt(null), s = vt(null), h = vt(null), { canvasElRef: o, activeTool: i, setTool: e, undo: t, clearAll: n, saveImage: a } = Ut();
   At(() => {
     if (!f) return;
-    const v = (m) => {
-      m.key === "Escape" && l();
+    const m = (v) => {
+      v.key === "Escape" && l();
     };
-    return document.addEventListener("keydown", v), () => document.removeEventListener("keydown", v);
+    return document.addEventListener("keydown", m), () => document.removeEventListener("keydown", m);
   }, [f]);
   function r() {
     at(!0), e("draw");
@@ -18557,8 +18559,11 @@ function Kt({ enabled: q }) {
   }
   return /* @__PURE__ */ ft(St, { children: [
     /* @__PURE__ */ it("div", { style: {
-      position: "fixed",
-      inset: 0,
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
       zIndex: 900,
       pointerEvents: f ? "all" : "none"
     }, children: /* @__PURE__ */ it("canvas", { ref: o, style: {

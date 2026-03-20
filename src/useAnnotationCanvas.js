@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { fabric } from 'fabric';
 
 function sizeCanvas(canvas) {
-  const W = window.innerWidth;
+  const W = document.documentElement.scrollWidth;
   const H = document.documentElement.scrollHeight;
   canvas.setWidth(W);
   canvas.setHeight(H);
@@ -282,6 +282,8 @@ export function useAnnotationCanvas() {
       const pageShot = await toCanvas(document.body, {
         useCORS: true,
         pixelRatio: window.devicePixelRatio || 1,
+        width: document.documentElement.scrollWidth,
+        height: document.documentElement.scrollHeight,
       });
 
       const fabricDataUrl = canvas.toDataURL({
