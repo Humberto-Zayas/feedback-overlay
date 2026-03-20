@@ -18495,15 +18495,9 @@ function Ut() {
     if (!t) return { success: !1 };
     e.forEach((n) => n && (n.style.visibility = "hidden"));
     try {
-      const n = (await import("./html2canvas.esm-dgT_1dIT.mjs")).default, a = await n(document.body, {
+      const { toCanvas: n } = await import("./index-xEu3GZzD.mjs"), a = await n(document.body, {
         useCORS: !0,
-        allowTaint: !0,
-        scale: window.devicePixelRatio || 1,
-        scrollY: -window.scrollY,
-        width: window.innerWidth,
-        height: window.innerHeight,
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight
+        pixelRatio: window.devicePixelRatio || 1
       }), r = t.toDataURL({
         format: "png",
         multiplier: window.devicePixelRatio || 1
