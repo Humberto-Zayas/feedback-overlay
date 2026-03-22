@@ -17,6 +17,7 @@ export function FeedbackOverlay({ enabled }) {
   const triggerRef = useRef(null);
   const saveRef = useRef(null);
   const toolbarRef = useRef(null);
+  const canvasWrapRef = useRef(null);
 
   const { canvasElRef, activeTool, setTool, undo, clearAll, saveImage } =
     useAnnotationCanvas();
@@ -32,23 +33,26 @@ export function FeedbackOverlay({ enabled }) {
   }, [feedbackMode]);
 
   function enterFeedback() {
+    document.body.style.overflow = 'hidden';
     setFeedbackMode(true);
     setTool('draw');
   }
 
   function exitFeedback() {
+    document.body.style.overflow = '';
+    clearAll();
     setFeedbackMode(false);
   }
 
   async function handleSave() {
     if (isSaving) return;
     setIsSaving(true);
-    setFlashMsg('Capturing…');
 
     const result = await saveImage([
       triggerRef.current,
       saveRef.current,
       toolbarRef.current,
+      canvasWrapRef.current,
     ]);
 
     if (result.success) {
@@ -64,11 +68,8 @@ export function FeedbackOverlay({ enabled }) {
   }
 
   const canvasWrapStyle = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
+    position: 'fixed',
+    inset: 0,
     zIndex: 900,
     pointerEvents: feedbackMode ? 'all' : 'none',
   };
@@ -81,7 +82,7 @@ export function FeedbackOverlay({ enabled }) {
   return (
     <>
       {/* Canvas — always rendered so fabric initializes once */}
-      <div style={canvasWrapStyle}>
+      <div ref={canvasWrapRef} style={canvasWrapStyle}>
         <canvas ref={canvasElRef} style={canvasStyle} />
       </div>
 

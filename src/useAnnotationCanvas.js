@@ -2,8 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 import { fabric } from 'fabric';
 
 function sizeCanvas(canvas) {
-  const W = document.documentElement.scrollWidth;
-  const H = document.documentElement.scrollHeight;
+  const W = window.innerWidth;
+  const H = window.innerHeight;
   canvas.setWidth(W);
   canvas.setHeight(H);
   canvas.renderAll();
@@ -278,22 +278,32 @@ export function useAnnotationCanvas() {
 
     try {
       const { toCanvas } = await import('html-to-image');
+      const ratio = window.devicePixelRatio || 1;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const sx = window.scrollX;
+      const sy = window.scrollY;
 
-      const pageShot = await toCanvas(document.body, {
+      const fullShot = await toCanvas(document.body, {
         useCORS: true,
-        pixelRatio: window.devicePixelRatio || 1,
-        width: document.documentElement.scrollWidth,
-        height: document.documentElement.scrollHeight,
+        pixelRatio: ratio,
       });
+
+      // Crop full-page capture to the visible viewport
+      const pageShot = document.createElement('canvas');
+      pageShot.width = vw * ratio;
+      pageShot.height = vh * ratio;
+      const pCtx = pageShot.getContext('2d');
+      pCtx.drawImage(fullShot, sx * ratio, sy * ratio, vw * ratio, vh * ratio, 0, 0, vw * ratio, vh * ratio);
 
       const fabricDataUrl = canvas.toDataURL({
         format: 'png',
-        multiplier: window.devicePixelRatio || 1,
+        multiplier: ratio,
       });
 
       const merged = document.createElement('canvas');
-      merged.width = pageShot.width;
-      merged.height = pageShot.height;
+      merged.width = vw * ratio;
+      merged.height = vh * ratio;
       const ctx = merged.getContext('2d');
       ctx.drawImage(pageShot, 0, 0);
 
