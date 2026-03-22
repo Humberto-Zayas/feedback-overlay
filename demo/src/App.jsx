@@ -138,21 +138,22 @@ export default function App() {
     <div style={styles.body}>
       {/* Marquee bar */}
       <div style={styles.marquee}>
-        Pharmaceutical · Consumer Health · Medical Devices · Biotech · OTC Brands · Clinical Trials
+        Branding · Editorial · Digital · Print · Motion · Campaigns
       </div>
 
       {/* Hero */}
       <div style={styles.hero}>
         <div>
-          <div style={styles.heroLabel}>Ad Copy — Selected Work</div>
+          <div style={styles.heroLabel}>Portfolio — Selected Work</div>
           <h1 style={styles.heroTitle}>
-            Words that<br />Move Product.
+            Design that<br />Gets Noticed.
           </h1>
         </div>
         <div>
           <p style={styles.heroBody}>
-            Regulatory-compliant copy that doesn't read like it was written by
-            a compliance department. Across pharma, OTC, and consumer health.
+            Placeholder content for a staging environment. Use the feedback
+            tool below to annotate, mark up, and capture notes directly on
+            the page.
           </p>
           <div
             style={{
@@ -169,20 +170,20 @@ export default function App() {
               color: 'rgba(28,28,34,0.25)',
             }}
           >
-            Client Campaign Asset
+            Image Placeholder
           </div>
         </div>
       </div>
 
-      {/* Featured brands */}
+      {/* Featured projects */}
       <div style={styles.section}>
-        <div style={styles.sectionLabel}>Featured Brands</div>
+        <div style={styles.sectionLabel}>Featured Projects</div>
         {[
-          ['01', 'Meridian Health', 'OTC / Consumer'],
-          ['02', 'Vantrel Biomedical', 'Rx / Clinical'],
-          ['03', 'Crestline Therapeutics', 'Specialty Pharma'],
-          ['04', 'Solara Wellness', 'Consumer Health'],
-          ['05', 'Norvik Diagnostics', 'Medical Devices'],
+          ['01', 'Project Alpha', 'Brand Identity'],
+          ['02', 'Project Beta', 'Web / Digital'],
+          ['03', 'Project Gamma', 'Editorial'],
+          ['04', 'Project Delta', 'Packaging'],
+          ['05', 'Project Epsilon', 'Campaign'],
         ].map(([num, name, cat]) => (
           <div key={num} style={styles.row}>
             <span style={styles.rowNum}>{num}</span>
@@ -194,43 +195,42 @@ export default function App() {
 
       {/* Long text section for scroll testing */}
       <div style={styles.longText}>
-        <div style={styles.sectionLabel}>About the Work</div>
+        <div style={styles.sectionLabel}>About</div>
         <p style={styles.paragraph}>
-          Fifteen years writing for brands that can't afford to get it wrong.
-          Every word earns its place — especially when the FDA is reading too.
-          Copy that moves product without moving the goalposts on compliance.
+          This is a placeholder page used to demonstrate the feedback overlay
+          tool. It includes enough layout variety — headlines, lists, body
+          copy, a footer — to test annotations across different page elements.
         </p>
         <p style={styles.paragraph}>
-          From DTC television to patient brochures, from physician detailers to
-          digital banner campaigns. The full spectrum of pharmaceutical
-          communication, handled with the precision the category demands.
+          Press <strong>Cmd+K</strong> (or click the Feedback button at the
+          bottom of the screen) to enter feedback mode. Draw, add arrows,
+          drop text, or highlight areas with boxes and circles.
         </p>
         <p style={styles.paragraph}>
-          OTC isn't easier — it just has different rules. Consumer-facing
-          language that has to work hard in a crowded aisle while staying
-          honest about what the product actually does. That's the challenge.
-          That's the craft.
+          When you're done, hit <strong>Save</strong> to download a merged
+          screenshot with your annotations baked in. Share it with your team
+          however you like — no account or upload required.
         </p>
         <p style={styles.paragraph}>
-          Available for project-based freelance engagements. Based in New York,
-          open to remote. Turnaround that respects your launch windows.
+          Press <strong>Esc</strong> to exit feedback mode without saving.
+          All annotations are cleared when you exit.
         </p>
       </div>
 
       {/* Footer */}
       <div style={styles.footer}>
         <div>
-          <div style={styles.footerHeading}>Brian Kumpf</div>
+          <div style={styles.footerHeading}>Your Name Here</div>
           <div style={styles.footerBody}>
-            Copywriter · Content Strategist<br />
-            Available for Freelance<br />
-            New York / Remote<br />
+            Designer · Developer · Strategist<br />
+            Available for Projects<br />
+            Location / Remote<br />
             <br />
-            briankumpfwrites.com
+            yourwebsite.com
           </div>
         </div>
         <div style={styles.footerNote}>
-          Fifteen years writing for brands that can't afford to get it wrong.
+          Placeholder footer content for layout and annotation testing.
         </div>
       </div>
 
