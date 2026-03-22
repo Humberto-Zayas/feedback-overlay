@@ -58,7 +58,7 @@ function Sep() {
   );
 }
 
-export function Toolbar({ activeTool, onToolChange, onUndo, onClear }) {
+export function Toolbar({ activeTool, onToolChange, onUndo, onRedo, onClear }) {
   const tools = [
     {
       name: 'select',
@@ -153,6 +153,13 @@ export function Toolbar({ activeTool, onToolChange, onUndo, onClear }) {
         <Svg>
           <polyline points="9 14 4 9 9 4" />
           <path d="M20 20v-7a4 4 0 0 0-4-4H4" />
+        </Svg>
+      </ToolBtn>
+
+      <ToolBtn name="redo" title="Redo" active={false} onClick={onRedo}>
+        <Svg>
+          <polyline points="15 14 20 9 15 4" />
+          <path d="M4 20v-7a4 4 0 0 1 4-4h12" />
         </Svg>
       </ToolBtn>
 

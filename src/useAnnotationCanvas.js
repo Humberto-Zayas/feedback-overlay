@@ -15,8 +15,11 @@ export function useAnnotationCanvas() {
   const currentToolRef = useRef('draw');
   const historyRef = useRef([]);
   const drawingRef = useRef(null); // { start, obj, arrowHead }
+  const justExitedTextRef = useRef(false);
+  const redoRef = useRef([]);
 
   const [activeTool, setActiveTool] = useState('draw');
+  const [selectedBounds, setSelectedBounds] = useState(null);
 
   useEffect(() => {
     const canvas = new fabric.Canvas(canvasElRef.current, {
@@ -31,14 +34,30 @@ export function useAnnotationCanvas() {
 
     historyRef.current = [canvas.toJSON()];
 
+    const pushHistory = () => {
+      historyRef.current.push(canvas.toJSON());
+      redoRef.current = [];
+    };
+
     canvas.on('path:created', (e) => {
       e.path.set({ selectable: true, evented: true });
-      historyRef.current.push(canvas.toJSON());
+      pushHistory();
     });
 
     canvas.on('text:editing:exited', () => {
-      historyRef.current.push(canvas.toJSON());
+      pushHistory();
+      justExitedTextRef.current = true;
     });
+
+    const updateBounds = () => {
+      const obj = canvas.getActiveObject();
+      setSelectedBounds(obj ? obj.getBoundingRect() : null);
+    };
+    canvas.on('selection:created', updateBounds);
+    canvas.on('selection:updated', updateBounds);
+    canvas.on('selection:cleared', () => setSelectedBounds(null));
+    canvas.on('object:moving', updateBounds);
+    canvas.on('object:modified', updateBounds);
 
     const onResize = () => sizeCanvas(canvas);
     window.addEventListener('resize', onResize);
@@ -57,6 +76,9 @@ export function useAnnotationCanvas() {
     canvas.off('mouse:up');
     canvas.isDrawingMode = false;
     canvas.selection = false;
+    canvas.discardActiveObject();
+    setSelectedBounds(null);
+    canvas.renderAll();
   }
 
   function setTool(name) {
@@ -76,7 +98,10 @@ export function useAnnotationCanvas() {
 
       case 'select':
         canvas.selection = true;
-        canvas.getObjects().forEach(obj => obj.set({ selectable: true, evented: true }));
+        canvas.getObjects().forEach(obj => {
+          obj.set({ selectable: true, evented: true });
+          obj.setCoords();
+        });
         canvas.renderAll();
         break;
 
@@ -124,13 +149,23 @@ export function useAnnotationCanvas() {
         canvas.on('mouse:up', () => {
           if (currentToolRef.current !== 'arrow') return;
           if (drawingRef.current) {
-            drawingRef.current.obj.set({ selectable: true, evented: true });
-            if (drawingRef.current.arrowHead) {
-              drawingRef.current.arrowHead.set({ selectable: true, evented: true });
+            const { obj: line, arrowHead } = drawingRef.current;
+            canvas.remove(line);
+            const members = [line];
+            if (arrowHead) {
+              canvas.remove(arrowHead);
+              members.push(arrowHead);
             }
+            const group = new fabric.Group(members, {
+              selectable: true,
+              evented: true,
+            });
+            canvas.add(group);
+            group.setCoords();
             drawingRef.current = null;
           }
           historyRef.current.push(canvas.toJSON());
+          redoRef.current = [];
         });
         break;
       }
@@ -173,9 +208,11 @@ export function useAnnotationCanvas() {
           if (currentToolRef.current !== 'box') return;
           if (drawingRef.current) {
             drawingRef.current.obj.set({ selectable: true, evented: true });
+            drawingRef.current.obj.setCoords();
             drawingRef.current = null;
           }
           historyRef.current.push(canvas.toJSON());
+          redoRef.current = [];
         });
         break;
       }
@@ -218,9 +255,11 @@ export function useAnnotationCanvas() {
           if (currentToolRef.current !== 'circle') return;
           if (drawingRef.current) {
             drawingRef.current.obj.set({ selectable: true, evented: true });
+            drawingRef.current.obj.setCoords();
             drawingRef.current = null;
           }
           historyRef.current.push(canvas.toJSON());
+          redoRef.current = [];
         });
         break;
       }
@@ -228,6 +267,10 @@ export function useAnnotationCanvas() {
       case 'text': {
         canvas.on('mouse:down', (opt) => {
           if (currentToolRef.current !== 'text') return;
+          if (justExitedTextRef.current) {
+            justExitedTextRef.current = false;
+            return;
+          }
           if (opt.target) return;
           const p = canvas.getPointer(opt.e);
           const txt = new fabric.IText('Type here', {
@@ -242,6 +285,7 @@ export function useAnnotationCanvas() {
           canvas.add(txt);
           canvas.setActiveObject(txt);
           txt.enterEditing();
+          txt.selectAll();
           canvas.renderAll();
         });
         break;
@@ -252,13 +296,34 @@ export function useAnnotationCanvas() {
     }
   }
 
+  function deleteSelected() {
+    const canvas = fabricRef.current;
+    if (!canvas) return;
+    const obj = canvas.getActiveObject();
+    if (!obj) return;
+    canvas.remove(obj);
+    canvas.discardActiveObject();
+    setSelectedBounds(null);
+    historyRef.current.push(canvas.toJSON());
+    canvas.renderAll();
+  }
+
   function undo() {
     const canvas = fabricRef.current;
     if (!canvas) return;
     if (historyRef.current.length <= 1) return;
-    historyRef.current.pop();
+    redoRef.current.push(historyRef.current.pop());
     const prev = historyRef.current[historyRef.current.length - 1];
     canvas.loadFromJSON(prev, () => canvas.renderAll());
+  }
+
+  function redo() {
+    const canvas = fabricRef.current;
+    if (!canvas) return;
+    if (redoRef.current.length === 0) return;
+    const next = redoRef.current.pop();
+    historyRef.current.push(next);
+    canvas.loadFromJSON(next, () => canvas.renderAll());
   }
 
   function clearAll() {
@@ -338,7 +403,10 @@ export function useAnnotationCanvas() {
     activeTool,
     setTool,
     undo,
+    redo,
     clearAll,
     saveImage,
+    selectedBounds,
+    deleteSelected,
   };
 }

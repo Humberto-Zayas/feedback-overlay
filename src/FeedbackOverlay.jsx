@@ -19,7 +19,7 @@ export function FeedbackOverlay({ enabled }) {
   const toolbarRef = useRef(null);
   const canvasWrapRef = useRef(null);
 
-  const { canvasElRef, activeTool, setTool, undo, clearAll, saveImage } =
+  const { canvasElRef, activeTool, setTool, undo, redo, clearAll, saveImage, selectedBounds, deleteSelected } =
     useAnnotationCanvas();
 
   // Esc to exit
@@ -93,6 +93,7 @@ export function FeedbackOverlay({ enabled }) {
             activeTool={activeTool}
             onToolChange={setTool}
             onUndo={() => undo()}
+            onRedo={() => redo()}
             onClear={() => clearAll()}
           />
         </div>
@@ -194,6 +195,34 @@ export function FeedbackOverlay({ enabled }) {
           </>
         )}
       </button>
+
+      {/* Delete selected button */}
+      {feedbackMode && selectedBounds && (
+        <button
+          onClick={deleteSelected}
+          style={{
+            position: 'fixed',
+            left: selectedBounds.left + selectedBounds.width + 6,
+            top: selectedBounds.top - 6,
+            zIndex: 1001,
+            background: TERRA,
+            color: CREAM,
+            border: 'none',
+            cursor: 'pointer',
+            width: 20,
+            height: 20,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: 'monospace',
+            fontSize: 13,
+            lineHeight: 1,
+            padding: 0,
+          }}
+        >
+          ×
+        </button>
+      )}
 
       {/* Flash message */}
       {flashMsg && (
