@@ -3,7 +3,6 @@ import { Toolbar } from './Toolbar.jsx';
 import { useAnnotationCanvas } from './useAnnotationCanvas.js';
 
 const INK = '#1C1C22';
-const BLUE = '#2B4FC7';
 const TERRA = '#B54A2A';
 const CREAM = '#EEEAE3';
 
@@ -14,8 +13,6 @@ export function FeedbackOverlay({ enabled }) {
   const [isSaving, setIsSaving] = useState(false);
   const [flashMsg, setFlashMsg] = useState('');
 
-  const triggerRef = useRef(null);
-  const saveRef = useRef(null);
   const toolbarRef = useRef(null);
   const canvasWrapRef = useRef(null);
 
@@ -48,12 +45,7 @@ export function FeedbackOverlay({ enabled }) {
     if (isSaving) return;
     setIsSaving(true);
 
-    const result = await saveImage([
-      triggerRef.current,
-      saveRef.current,
-      toolbarRef.current,
-      canvasWrapRef.current,
-    ]);
+    const result = await saveImage([toolbarRef.current, canvasWrapRef.current]);
 
     if (result.success) {
       setFlashMsg('Saved ✓');
@@ -67,134 +59,35 @@ export function FeedbackOverlay({ enabled }) {
     }, 1200);
   }
 
-  const canvasWrapStyle = {
-    position: 'fixed',
-    inset: 0,
-    zIndex: 900,
-    pointerEvents: feedbackMode ? 'all' : 'none',
-  };
-
-  const canvasStyle = {
-    position: 'absolute',
-    inset: 0,
-  };
-
   return (
     <>
       {/* Canvas — always rendered so fabric initializes once */}
-      <div ref={canvasWrapRef} style={canvasWrapStyle}>
-        <canvas ref={canvasElRef} style={canvasStyle} />
-      </div>
-
-      {/* Toolbar */}
-      {feedbackMode && (
-        <div ref={toolbarRef}>
-          <Toolbar
-            activeTool={activeTool}
-            onToolChange={setTool}
-            onUndo={() => undo()}
-            onRedo={() => redo()}
-            onClear={() => clearAll()}
-          />
-        </div>
-      )}
-
-      {/* Save button */}
-      {feedbackMode && (
-        <button
-          ref={saveRef}
-          onClick={handleSave}
-          disabled={isSaving}
-          style={{
-            position: 'fixed',
-            bottom: 28,
-            right: 152,
-            zIndex: 1000,
-            background: BLUE,
-            color: '#F7F4EF',
-            border: 'none',
-            cursor: isSaving ? 'default' : 'pointer',
-            padding: '10px 16px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            fontFamily: 'monospace',
-            fontSize: 10,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            boxShadow: '0 2px 16px rgba(43,79,199,0.3)',
-          }}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width={14}
-            height={14}
-            stroke="currentColor"
-            fill="none"
-            strokeWidth={1.8}
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="12" cy="12" r="3" />
-          </svg>
-          Save Image
-        </button>
-      )}
-
-      {/* Trigger button */}
-      <button
-        ref={triggerRef}
-        onClick={feedbackMode ? exitFeedback : enterFeedback}
+      <div
+        ref={canvasWrapRef}
         style={{
           position: 'fixed',
-          bottom: 28,
-          right: 28,
-          zIndex: 1000,
-          background: feedbackMode ? TERRA : INK,
-          color: CREAM,
-          border: 'none',
-          cursor: 'pointer',
-          padding: '10px 16px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          fontFamily: 'monospace',
-          fontSize: 10,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          boxShadow: '0 2px 16px rgba(0,0,0,0.18)',
+          inset: 0,
+          zIndex: 900,
+          pointerEvents: feedbackMode ? 'all' : 'none',
         }}
       >
-        {feedbackMode ? (
-          <>
-            <svg
-              viewBox="0 0 24 24"
-              width={14}
-              height={14}
-              stroke="currentColor"
-              fill="none"
-              strokeWidth={1.8}
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-            Exit
-          </>
-        ) : (
-          <>
-            <svg
-              viewBox="0 0 24 24"
-              width={14}
-              height={14}
-              stroke="currentColor"
-              fill="none"
-              strokeWidth={1.8}
-            >
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-            Feedback
-          </>
-        )}
-      </button>
+        <canvas ref={canvasElRef} style={{ position: 'absolute', inset: 0 }} />
+      </div>
+
+      {/* Toolbar — always rendered, animates between collapsed/expanded */}
+      <Toolbar
+        containerRef={toolbarRef}
+        feedbackMode={feedbackMode}
+        onEnter={enterFeedback}
+        onExit={exitFeedback}
+        activeTool={activeTool}
+        onToolChange={setTool}
+        onUndo={undo}
+        onRedo={redo}
+        onClear={clearAll}
+        onSave={handleSave}
+        isSaving={isSaving}
+      />
 
       {/* Delete selected button */}
       {feedbackMode && selectedBounds && (
