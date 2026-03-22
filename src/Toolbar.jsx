@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const INK = '#1C1C22';
 const ACTIVE_BG = 'rgba(238,234,227,0.12)';
@@ -6,26 +6,54 @@ const ACTIVE_COLOR = '#F7F4EF';
 const INACTIVE_COLOR = 'rgba(238,234,227,0.5)';
 
 function ToolBtn({ name, active, onClick, title, children }) {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <button
-      title={title}
-      onClick={() => onClick(name)}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 34,
-        height: 34,
-        background: active ? ACTIVE_BG : 'transparent',
-        border: 'none',
-        cursor: 'pointer',
-        borderRadius: 2,
-        color: active ? ACTIVE_COLOR : INACTIVE_COLOR,
-        transition: 'background 0.15s, color 0.15s',
-      }}
-    >
-      {children}
-    </button>
+    <div style={{ position: 'relative' }}>
+      {hovered && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 'calc(100% + 8px)',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'rgba(28,28,34,0.95)',
+            color: 'rgba(238,234,227,0.85)',
+            fontFamily: 'monospace',
+            fontSize: 9,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            padding: '4px 7px',
+            borderRadius: 2,
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none',
+            border: '1px solid rgba(238,234,227,0.08)',
+          }}
+        >
+          {title}
+        </div>
+      )}
+      <button
+        onClick={() => onClick(name)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 34,
+          height: 34,
+          background: active ? ACTIVE_BG : 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          borderRadius: 2,
+          color: active ? ACTIVE_COLOR : INACTIVE_COLOR,
+          transition: 'background 0.15s, color 0.15s',
+        }}
+      >
+        {children}
+      </button>
+    </div>
   );
 }
 
