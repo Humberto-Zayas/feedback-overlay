@@ -19,11 +19,15 @@ export function FeedbackOverlay({ enabled }) {
   const { canvasElRef, activeTool, setTool, undo, redo, clearAll, saveImage, selectedBounds, deleteSelected } =
     useAnnotationCanvas();
 
-  // Esc to exit
+  // Keyboard shortcuts: ⌘K/Ctrl+K to open, Esc to close
   useEffect(() => {
-    if (!feedbackMode) return;
     const handler = (e) => {
-      if (e.key === 'Escape') exitFeedback();
+      if (e.key === 'Escape' && feedbackMode) {
+        exitFeedback();
+      } else if (e.key === 'k' && (e.metaKey || e.ctrlKey) && !feedbackMode) {
+        e.preventDefault();
+        enterFeedback();
+      }
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
